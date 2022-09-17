@@ -109,7 +109,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 							<a href="#" class="nav-link active">
 								<i class="nav-icon fas fa-table"></i>
 								<p>
-									Cliente
+									ASOCIACION
 									<i class="fas fa-angle-left right"></i>
 								</p>
 							</a>
@@ -117,19 +117,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 								<li class="nav-item">
 									<a href="<?php echo base_url(); ?>index.php/Cliente/index" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Lista</p>
+										<p>Asociaciones Deportivas</p>
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="<?php echo base_url(); ?>index.php/Cliente/agregar" class="nav-link ">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Registrar</p>
+										<p>Registrar Asociacion Deportiva</p>
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="<?php echo base_url(); ?>index.php/Cliente/deshabilitados" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Inahabilitados</p>
+										<p>Asociaciones sin personeria Juridica</p>
 									</a>
 								</li>
 							</ul>
@@ -138,7 +138,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 							<a href="#" class="nav-link  active">
 								<i class="nav-icon fas fa-table"></i>
 								<p>
-									Conductores
+									Solicitudes
 									<i class="fas fa-angle-left right"></i>
 								</p>
 							</a>
@@ -146,7 +146,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 								<li class="nav-item">
 									<a href="<?php echo base_url(); ?>index.php/Conductor/index" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Lista</p>
+										<p>Solicitudes de Asociaciones</p>
 									</a>
 								</li>
 
@@ -156,7 +156,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 							<a href="#" class="nav-link  active">
 								<i class="nav-icon fas fa-table"></i>
 								<p>
-									Tarjetas
+									Solicitudes aceptadas
 									<i class="fas fa-angle-left right"></i>
 								</p>
 							</a>
@@ -164,7 +164,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 								<li class="nav-item">
 									<a href="<?php echo base_url(); ?>index.php/Tarjeta/index" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Lista</p>
+										<p>Solicitudes Rechazados</p>
 									</a>
 								</li>
 
