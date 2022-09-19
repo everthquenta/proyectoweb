@@ -1,11 +1,11 @@
 <div class="col py-3">
     <div class="" style="width:100% ;">
-        <p>System / Asociaciones</p>
+        <p>DIRECCION DEPARTAMENTAL DEL DEPORTE / SOLICITUDES</p>
 
     </div>
     <input type="text" class="form-control border border-dark " name="" id="dato_buscado" aria-describedby="emailHelp" onkeyup="btn_buscar();" style="width:60%;display:inline;margin-top:.1em; margin-bottom:15px;">
     <button type="button" class="btn border border-primary " data-toggle="modal" onclick="btn_buscar();"> Buscar</button>
-    <button type="button" class="btn border border-dark" data-toggle="modal" data-target="#myModal_registrar" onclick="btn_modal_para_ingresar()">Registrar</button>
+    <button type="button" class="btn border border-dark" data-toggle="modal" data-target="#myModal_registrar" onclick="btn_modal_para_registrar()">Registrar</button>
     <!-- <button type="button" class="btn btn-primary " onclick="btn_listar_datos();"> Listar</button> -->
 
     <!-- <button type="button" class="btn border border-dark" data-bs-toggle="modal" data-target="#myModal_registrars" onclick="btn_modal_para_ingresar()" style="display:inline;">Agregar</button> -->
@@ -18,11 +18,11 @@
             <thead class="text-white " style="border-bottom:none; background:#197E6A;">
                 <tr>
                 <th>#</th> 
-                  <th>LOGO</th> 
+                  <th>HOJA DE RUTA</th> 
                   <th>ASOCIACION DEPORTIVA</th>
-                  <th>INFORMACION</th>  
-                  <th>EDITAR</th>  
-                  <th>ELIMINAR</th>
+                  <th>REFERENCIA</th>  
+                  <th>ACEPTAR</th>  
+                  <th>RECHAZAR</th>
                   
                 </tr>
             </thead>
@@ -30,48 +30,36 @@
 
                 <?php
                 $indice = 0;
-                foreach ($asociacion->result() as $row) {
-                    $idAsociacion = $row->idAsociacion;
+                foreach ($solicitud->result() as $row) {
+                    $idSolicitud = $row->idSolicitud;
                 ?>
                     <tr>
                     <th scope="row"><?php $indice++;
                                         echo $indice;
                                         ?></th>
-                    <th scope="row">
-                         <?php
-                      $logo=$row->logo;
-                      if($logo==""){
-                      ?>
-                     <img src="<?php echo base_url();?>/uploads/user.jpeg" style="width:80px; heigth: 80px;">
-                     <?php
-                      }else
-                     {
-                     ?>
-                     <img src="<?php echo base_url();?>./uploads/<?php echo $logo;?>" style="width:80px; heigth: 80px;">
-                     <?php
-
-                     }
-                     ?>
-                     </th>
+                    
                      </td>
-                        <td><?php echo $row->nombre;
+                        <td><?php echo $row->hojaRuta;
+                            ?> </td>
+                        
+                        <td><?php echo $row->idAsociacion;
                             ?> </td>
 
                             <td scope="col">
 
 
-                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal_info" onclick="btn_info('<?php echo $idAsociacion; ?>');">VER INFORMACION</button>
+                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal_info" onclick="btn_info('<?php echo $idSolicitud; ?>');">VER INFORMACION</button>
 
                             </td>
                         <td scope="col">
 
 
-                            <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal_editar" onclick="btn_editar('<?php echo $idAsociacion; ?>');">MODIFICAR</button>
+                            <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal_editar" onclick="btn_editar('<?php echo $idSolicitud; ?>');">MODIFICAR</button>
 
                         </td>
                         <td scope="col">
 
-                            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal_eliminar" onclick="btn_eliminar('<?php echo $idAsociacion; ?>');">ELIMINAR</button>
+                            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal_eliminar" onclick="btn_eliminar('<?php echo $idSolicitud; ?>');">ELIMINAR</button>
 
                             <!-- <button type="button" class="btn btn-outline-danger" onclick="btn_eliminar('<?php //echo $idConductor; 
                                                                                                                 ?>');"> -->

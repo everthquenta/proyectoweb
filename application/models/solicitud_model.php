@@ -1,14 +1,16 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Asociacion_model extends CI_Model
+class Solicitud_model extends CI_Model
 {
 
-	public function l_asociacion()
+	public function l_solicitud()
 	{
-		$this->db->select('*'); //select*
-		$this->db->from('asociacion'); //tabla
+		$this->db->select('s.hojaRuta', 'a.nombre', 's.referencia', 's.campeonato'); //select*
+		$this->db->from('solicitud s'); //tabla
+		$this->db->on('asociacion a', on, 'a.idAsociacion','=','s.idAsociacion');
 		$this->db->where('estado', '1');
+		
 		return $this->db->get();	//devolucion del resultado de la consulta
 	}
 

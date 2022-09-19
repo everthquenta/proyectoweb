@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Asociacion extends CI_Controller
+class Solicitud extends CI_Controller
 {
 
 	public function __construct()
@@ -12,12 +12,12 @@ class Asociacion extends CI_Controller
 	public function index()
 	{
 
-		$lista = $this->asociacion_model->l_asociacion();
-		$data['asociacion'] = $lista;
+		$lista = $this->solicitud_model->l_solicitud();
+		$data['solicitud'] = $lista;
 
 
 		$this->load->view('inc/headerlte');
-		$this->load->view('asociacion/lista', $data);
+		$this->load->view('solicitud/s_lista', $data);
 		$this->load->view('inc/footerlte');
 	}
 
@@ -193,7 +193,7 @@ class Asociacion extends CI_Controller
 	{
 
 		$data["opcion"] ="formulario"; 
-		$this->load->view('asociacion/option', $data);
+		$this->load->view('solicitud/s_option', $data);
 	}
 
 	public function cerrar_session()

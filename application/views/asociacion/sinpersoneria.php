@@ -4,22 +4,22 @@
 
     </div>
     <input type="text" class="form-control border border-dark " name="" id="dato_buscado" aria-describedby="emailHelp" onkeyup="btn_buscar();" style="width:60%;display:inline;margin-top:.1em; margin-bottom:15px;">
-    <button type="button" class="btn border border-primary " data-toggle="modal" onclick="btn_buscar();"> Buscar</button>
+    <button type="button" class="btn border border-dark " data-toggle="modal" onclick="btn_buscar();"> Buscar</button>
     <button type="button" class="btn border border-dark" data-toggle="modal" data-target="#myModal_registrar" onclick="btn_modal_para_ingresar()">Registrar</button>
     <!-- <button type="button" class="btn btn-primary " onclick="btn_listar_datos();"> Listar</button> -->
 
     <!-- <button type="button" class="btn border border-dark" data-bs-toggle="modal" data-target="#myModal_registrars" onclick="btn_modal_para_ingresar()" style="display:inline;">Agregar</button> -->
 
 
-    <!-- Tabla de ASOCIACIONES -->
+    <!-- Tabla de medicamentos -->
     <!-- Start panael listado -->
     <div id="panel_listado">
-        <table class="table table-bordered" style="border-color:#061B3D !important">
-            <thead class="text-white " style="border-bottom:none; background:#197E6A;">
+        <table class="table table-bordered" style="border-color:#DDF9F9 !important">
+            <thead class="text-white " style="border-bottom:none; background:#061B3D;">
                 <tr>
-                <th>#</th> 
-                  <th>LOGO</th> 
-                  <th>ASOCIACION DEPORTIVA</th>
+                <th>#</th>
+                  <th>Logo</th> 
+                  <th>Asociación</th>
                   <th>INFORMACION</th>  
                   <th>EDITAR</th>  
                   <th>ELIMINAR</th>
@@ -42,7 +42,7 @@
                       $logo=$row->logo;
                       if($logo==""){
                       ?>
-                     <img src="<?php echo base_url();?>/uploads/user.jpeg" style="width:80px; heigth: 80px;">
+                     <img src="<?php echo base_url();?>/uploads/user.jpeg" style="width:60px; heigth: 60px;">
                      <?php
                       }else
                      {
@@ -71,7 +71,7 @@
                         </td>
                         <td scope="col">
 
-                            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal_eliminar" onclick="btn_eliminar('<?php echo $idAsociacion; ?>');">ELIMINAR</button>
+                            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#myModal_eliminar" onclick="btn_habilitar('<?php echo $idAsociacion; ?>');">HABILITAR</button>
 
                             <!-- <button type="button" class="btn btn-outline-danger" onclick="btn_eliminar('<?php //echo $idConductor; 
                                                                                                                 ?>');"> -->

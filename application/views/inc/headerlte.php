@@ -65,12 +65,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		<!-- Main Sidebar Container -->
 		<aside class="main-sidebar  elevation-4" style="background:#3D4246">
 			<!-- Brand Logo -->
-			<div style="width:80px; heigth: 80px;">
+			
 				<a href="../../index3.html" class="brand-link pb-20 mb-20 d-flex" heigth="200px">
-					<img src="<?php echo base_url(); ?>img/logoinstitucional.png" alt="AdminLTE Logo" class="brand-image  elevation-100" style="opacity: .9; heigth: 3000px">
-					<span class="brand-text font-weight-light text-white">DIDEDE</span>
+					<img src="<?php echo base_url(); ?>img/logoinstitucional.png" alt="AdminLTE Logo"  style="opacity: .9; width:65px; heigth: 65px;" >
+					
+					<div><span class="brand-text font-weight-light text-white"><h1>DIDEDE</h1></span></div>
 				</a>
-			</div>
+			
 			
 
 			<!-- Sidebar -->
@@ -115,19 +116,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="<?php echo base_url(); ?>index.php/Cliente/index" class="nav-link">
+									<a href="<?php echo base_url(); ?>index.php/Asociacion/index" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Asociaciones Deportivas</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="<?php echo base_url(); ?>index.php/Cliente/agregar" class="nav-link ">
+									<a href="<?php echo base_url(); ?>index.php/Asociacion/subir_modal" class="nav-link ">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Registrar Asociacion Deportiva</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="<?php echo base_url(); ?>index.php/Cliente/deshabilitados" class="nav-link">
+									<a href="<?php echo base_url(); ?>index.php/Asociacion/desabilitados" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Asociaciones sin personeria Juridica</p>
 									</a>
@@ -144,7 +145,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="<?php echo base_url(); ?>index.php/Conductor/index" class="nav-link">
+									<a href="<?php echo base_url(); ?>index.php/Solicitud/index" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Solicitudes de Asociaciones</p>
 									</a>

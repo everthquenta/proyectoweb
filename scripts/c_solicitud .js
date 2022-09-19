@@ -178,7 +178,7 @@ function btn_buscar()
 
 //modal para registrar
 
-function btn_modal_para_ingresar(){
+function btn_modal_para_registrar(){
     
     console.log('click');
     var ob= "";
@@ -186,7 +186,7 @@ function btn_modal_para_ingresar(){
                     //el protocolo
                     type: "POST",
                     //a donde quiero mandar el objeto
-                    url: "http://localhost/didede/index.php/Asociacion/subir_modal",    
+                    url: "http://localhost/didede/index.php/Solicitud/subir_modal",    
                     data: ob,
     
                     //que quieres mostrar como recargable al iniciar
@@ -196,11 +196,6 @@ function btn_modal_para_ingresar(){
                     {
                         
                         $("#panel_registrar").html(data);
-                                                    
-                            
-                            
-                            
-                        
                        
                     }
                 });
