@@ -4,7 +4,7 @@
 
     </div>
     <input type="text" class="form-control border border-dark " name="" id="dato_buscado" aria-describedby="emailHelp" onkeyup="btn_buscar();" style="width:60%;display:inline;margin-top:.1em; margin-bottom:15px;">
-    <button type="button" class="btn border border-primary " data-toggle="modal" onclick="btn_buscar();"> Buscar</button>
+    <button type="button" class="btn border border-primary " data-toggle="modal" > Buscar</button>
     <button type="button" class="btn border border-dark" data-toggle="modal" data-target="#myModal_registrar" onclick="btn_modal_para_ingresar()">Registrar</button>
     <!-- <button type="button" class="btn btn-primary " onclick="btn_listar_datos();"> Listar</button> -->
 

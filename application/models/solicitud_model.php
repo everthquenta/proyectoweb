@@ -6,10 +6,10 @@ class Solicitud_model extends CI_Model
 
 	public function l_solicitud()
 	{
-		$this->db->select('s.hojaRuta', 'a.nombre', 's.referencia', 's.campeonato'); //select*
+		$this->db->select('s.hojaRuta, a.nombre, s.remitente, s.campeonato, s.idSolicitud'); //select*
 		$this->db->from('solicitud s'); //tabla
-		$this->db->on('asociacion a', on, 'a.idAsociacion','=','s.idAsociacion');
-		$this->db->where('estado', '1');
+		$this->db->join('asociacion a', 'a.idAsociacion=s.idAsociacion'); //tabla
+		$this->db->where('a.estado', '1');
 		
 		return $this->db->get();	//devolucion del resultado de la consulta
 	}

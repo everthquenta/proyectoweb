@@ -157,34 +157,17 @@ class Asociacion extends CI_Controller
 		$this->upload->data();
 	}
 
-	public function buscar_en_bd($pag = 1)
+	public function buscar_en_bd()
 	{
-		$pag--;
-
-		if ($pag < 0) {
-			$pag = 0;
-		}
-
-
-		$pag_size = 3;
-		$offset = $pag * $pag_size;
-
-		$lista = $this->Asociacion->pagination($pag_size, $offset);
-		$data['asociacion'] = $lista;
-
-
+	
 		// aca empieza
 
 		$palabra_buscar = $_POST['palabra'];
 
-		$data = array(
-			"opcion" => "buscador",
-			"asociacion" => $this->Asociacion->buscar($palabra_buscar),
-			'last_pag' => ceil($this->Asociacion->count() / $pag_size),
-			'current_pag' => $pag,
+		$data ["opcion"]="buscador";
+		$data ["asociaciondep"]= $this->asociacion_model->buscar($palabra_buscar);
 
-		);
-		$this->load->view('asociacion/VO_medicamento', $data);
+		$this->load->view('asociacion/option', $data);
 	}
 
 	//cargar el formulario al modal

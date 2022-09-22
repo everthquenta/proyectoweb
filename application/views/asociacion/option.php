@@ -2,11 +2,11 @@
 
 if ($opcion == "listar") { ?>
  <table class="table table-bordered" style="border-color:#061B3D !important">
-            <thead class="text-white " style="border-bottom:none; background:#061B3D;">
+            <thead class="text-white " style="border-bottom:none; background:#197E6A;">
                 <tr>
-                <th>#</th>
-                  <th>Logo</th> 
-                  <th>Asociación</th>
+                <th>#</th> 
+                  <th>LOGO</th> 
+                  <th>ASOCIACION DEPORTIVA</th>
                   <th>INFORMACION</th>  
                   <th>EDITAR</th>  
                   <th>ELIMINAR</th>
@@ -34,7 +34,7 @@ if ($opcion == "listar") { ?>
                       }else
                      {
                      ?>
-                     <img src="<?php echo base_url();?>uploads/<?php echo $logo;?>" style="width:80px; heigth: 80px;">
+                     <img src="<?php echo base_url();?>./uploads/<?php echo $logo;?>" style="width:80px; heigth: 80px;">
                      <?php
 
                      }
@@ -47,7 +47,7 @@ if ($opcion == "listar") { ?>
                             <td scope="col">
 
 
-                            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#myModal_info" onclick="btn_info('<?php echo $idAsociacion; ?>');">VER INFORMACION</button>
+                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal_info" onclick="btn_info('<?php echo $idAsociacion; ?>');">VER INFORMACION</button>
 
                             </td>
                         <td scope="col">
@@ -76,7 +76,6 @@ if ($opcion == "listar") { ?>
 
             </tbody>
         </table>
-
 
 
   <?php }
@@ -134,106 +133,84 @@ if ($opcion == "buscador") {
     ?>
 
 
-    <table class="table table-bordered">
-      <thead style="background:#337ccb;" class="text-white">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Medicamento</th>
-          <th scope="col">Cantidad</th>
-          <th scope="col">Precio</th>
-          <th scope="col">Precio_2</th>
-          <th scope="col">Precio_3</th>
-          <th scope="col">Fecha_venc</th>
-          <th scope="col">Tipo</th>
-          <th scope="col">Ver</th>
-          <?php if ($this->session->userdata['id_cargo_session']  == 1) { ?>
-            <th scope="col">Modificar</th>
-            <th scope="col">Eliminar</th>
-          <?php } ?>
+<table class="table table-bordered" style="border-color:#061B3D !important">
+            <thead class="text-white " style="border-bottom:none; background:#197E6A;">
+                <tr>
+                <th>#</th> 
+                  <th>LOGO</th> 
+                  <th>ASOCIACION DEPORTIVA</th>
+                  <th>INFORMACION</th>  
+                  <th>EDITAR</th>  
+                  <th>ELIMINAR</th>
+                  
+                </tr>
+            </thead>
+            <tbody>
 
-        </tr>
-      </thead>
-      <tbody>
+                <?php
+                $indice = 0;
+                foreach ($asociaciondep->result() as $row) {
+                    $idAsociacion = $row->idAsociacion;
+                ?>
+                    <tr>
+                    <th scope="row"><?php $indice++;
+                                        echo $indice;
+                                        ?></th>
+                    <th scope="row">
+                         <?php
+                      $logo=$row->logo;
+                      if($logo==""){
+                      ?>
+                     <img src="<?php echo base_url();?>/uploads/user.jpeg" style="width:80px; heigth: 80px;">
+                     <?php
+                      }else
+                     {
+                     ?>
+                     <img src="<?php echo base_url();?>./uploads/<?php echo $logo;?>" style="width:80px; heigth: 80px;">
+                     <?php
 
-        <?php
-        $indice = 0;
-        foreach ($medicamentos->result() as $row) {
-          $id_medicamento = $row->id_medicamento;
-        ?>
-          <tr>
-            <th scope="row"><?php $indice++;
-                            echo $indice;
-                            ?></th>
-            <td><?php echo $row->medicamento;
-                ?> </td>
+                     }
+                     ?>
+                     </th>
+                     </td>
+                        <td><?php echo $row->nombre;
+                            ?> </td>
 
-            <td><?php echo $row->cantidad;
-                ?></td>
-            <td><?php echo $row->precio;
-                ?></td>
-            <td><?php echo $row->precio_2;
-                ?></td>
-            <td><?php echo $row->precio_3;
-                ?></td>
-            <td><?php echo $row->fecha_venc;
-                ?></td>
-            <td><?php echo $row->categoria;
-                ?></td>
-            <td scope="col">
-
-              <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#myModal_detalle" onclick="btn_mostrar_detalle('<?php echo $id_medicamento; ?>');">
-                Ver
-              </button>
-            </td>
-            <?php if ($this->session->userdata['id_cargo_session']  == 1) { ?>
-
-              <td scope="col">
-
-                <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#myModal_editar" onclick="btn_editar('<?php echo $id_medicamento;
-                                                                                                                                                    ?>');">
-                  Editar
-                </button>
-              </td>
-              <td scope="col">
-
-                <button type="button" class="btn btn-outline-danger" onclick="btn_eliminar('<?php echo $id_medicamento;
-                                                                                            ?>');">
-                  Eliminar
-                </button>
-              </td>
-            <?php } ?>
+                            <td scope="col">
 
 
-          </tr>
+                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal_info" onclick="btn_info('<?php echo $idAsociacion; ?>');">VER INFORMACION</button>
 
-        <?php
-        }
-
-        ?>
+                            </td>
+                        <td scope="col">
 
 
-      </tbody>
-    </table>
+                            <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal_editar" onclick="btn_editar('<?php echo $idAsociacion; ?>');">MODIFICAR</button>
 
+                        </td>
+                        <td scope="col">
+
+                            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal_eliminar" onclick="btn_eliminar('<?php echo $idAsociacion; ?>');">ELIMINAR</button>
+
+                            <!-- <button type="button" class="btn btn-outline-danger" onclick="btn_eliminar('<?php //echo $idConductor; 
+                                                                                                                ?>');"> -->
+                            <!-- </button> -->
+                        </td>
+
+
+                    </tr>
+
+                <?php
+                }
+
+                ?>
+
+
+            </tbody>
+        </table>
 
     <!-- Paginacion  -->
-    <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        <?php
-        for ($i = 1; $i <= $last_pag; $i++) {
-        ?>
-          <li class="page-item"><a class="page-link" href="<?php echo base_url();
-                                                            ?>Cmedicamento/index/<?php echo $i
-                                                                                  ?>"><?php echo $i
-                                                                                      ?></a></li>
-        <?php
-        }
-        ?>
-
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-      </ul>
-    </nav>
+  
     <!-- End Paginacion  -->
 
 

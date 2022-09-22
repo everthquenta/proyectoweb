@@ -21,6 +21,7 @@
                   <th>HOJA DE RUTA</th> 
                   <th>ASOCIACION DEPORTIVA</th>
                   <th>REFERENCIA</th>  
+                  <th>CAMPEONATO</th>  
                   <th>ACEPTAR</th>  
                   <th>RECHAZAR</th>
                   
@@ -42,8 +43,15 @@
                         <td><?php echo $row->hojaRuta;
                             ?> </td>
                         
-                        <td><?php echo $row->idAsociacion;
+                        <td><?php echo $row->nombre;
                             ?> </td>
+
+                        <td><?php echo $row->remitente;
+                            ?> </td>
+                        
+                        <td><?php echo $row->campeonato;
+                            ?> </td>
+                        
 
                             <td scope="col">
 

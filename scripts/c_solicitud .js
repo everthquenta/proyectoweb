@@ -148,7 +148,7 @@ function btn_guardar_edicion()
 }
 
 
-function btn_buscar()
+function btn_buscar_solicitud()
 {
 
     var palabra = $("#dato_buscado").val();

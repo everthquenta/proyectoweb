@@ -1,13 +1,14 @@
 <?php
 
 if ($opcion == "listar") { ?>
- <table class="table table-bordered" style="border-color:#061B3D !important">
+  <table class="table table-bordered" style="border-color:#061B3D !important">
             <thead class="text-white " style="border-bottom:none; background:#197E6A;">
                 <tr>
                 <th>#</th> 
                   <th>HOJA DE RUTA</th> 
                   <th>ASOCIACION DEPORTIVA</th>
                   <th>REFERENCIA</th>  
+                  <th>CAMPEONATO</th>  
                   <th>ACEPTAR</th>  
                   <th>RECHAZAR</th>
                   
@@ -17,8 +18,8 @@ if ($opcion == "listar") { ?>
 
                 <?php
                 $indice = 0;
-                foreach ($asociacion->result() as $row) {
-                    $idAsociacion = $row->idAsociacion;
+                foreach ($solicitud->result() as $row) {
+                    $idSolicitud = $row->idSolicitud;
                 ?>
                     <tr>
                     <th scope="row"><?php $indice++;
@@ -26,24 +27,34 @@ if ($opcion == "listar") { ?>
                                         ?></th>
                     
                      </td>
+                        <td><?php echo $row->hojaRuta;
+                            ?> </td>
+                        
                         <td><?php echo $row->nombre;
                             ?> </td>
+
+                        <td><?php echo $row->remitente;
+                            ?> </td>
+                        
+                        <td><?php echo $row->campeonato;
+                            ?> </td>
+                        
 
                             <td scope="col">
 
 
-                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal_info" onclick="btn_info('<?php echo $idAsociacion; ?>');">VER INFORMACION</button>
+                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal_info" onclick="btn_info('<?php echo $idSolicitud; ?>');">VER INFORMACION</button>
 
                             </td>
                         <td scope="col">
 
 
-                            <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal_editar" onclick="btn_editar('<?php echo $idAsociacion; ?>');">MODIFICAR</button>
+                            <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal_editar" onclick="btn_editar('<?php echo $idSolicitud; ?>');">MODIFICAR</button>
 
                         </td>
                         <td scope="col">
 
-                            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal_eliminar" onclick="btn_eliminar('<?php echo $idAsociacion; ?>');">ELIMINAR</button>
+                            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal_eliminar" onclick="btn_eliminar('<?php echo $idSolicitud; ?>');">ELIMINAR</button>
 
                             <!-- <button type="button" class="btn btn-outline-danger" onclick="btn_eliminar('<?php //echo $idConductor; 
                                                                                                                 ?>');"> -->
@@ -61,7 +72,6 @@ if ($opcion == "listar") { ?>
 
             </tbody>
         </table>
-
 
 
   <?php }

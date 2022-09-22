@@ -158,7 +158,7 @@ function btn_buscar()
                     //el protocolo
                     type: "POST",
                     //a donde quiero mandar el objeto
-                    url: url_p+"Asociacion/buscar_en_bd",    
+                    url: "http://localhost/didede/index.php/Asociacion/buscar_en_bd",    
                     data: obj,
     
                     //que quieres mostrar como recargable al iniciar
