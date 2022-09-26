@@ -1,22 +1,23 @@
 
 
-function btn_guardar_datos()
-{
-    var nombre = $("#nombre").val();
-    var direccion = $("#direccion").val();
-    var  telefono = $("#telefono").val();
-    var correo = $("#correo").val();
-    var fechaPersJuridica  = $("#fechaPersJuridica").val();
-    var logo  = $("#logo").val();
+function btn_guardar_datos_solic()
+{   
+    var idAsociacion = $("#idAsociacion_s").val();
+    var hojaRuta = $("#hojaRuta").val();
+    var remitente = $("#remitente").val();
+    var  campeonato = $("#campeonato").val();
+    var referencia = $("#referencia").val();
+    
     
 
-    var ob= {nombre:nombre,direccion:direccion,telefono:telefono,correo:correo,fechaPersJuridica:fechaPersJuridica, logo:logo};
+    var ob= {idAsociacion:Number(idAsociacion),hojaRuta:hojaRuta,remitente:remitente,campeonato:campeonato,referencia:referencia};
+    console.log(ob);
     $.ajax({
                 //el protocolo
                 type: "POST",
 
                 //a donde quiero mandar el objeto
-                url: "http://localhost/didede/index.php/Asociacion/agregar_bd",    
+                url: "http://localhost/didede/index.php/Solicitud/agregar_bd_solic",    
 
                 data: ob,
 
@@ -26,8 +27,9 @@ function btn_guardar_datos()
                 //al finalizar
                 success: function(data)
                 {
-                    $("#panel_respuesta").html("");
+                    $("#panel_respuesta").html(data);
                     btn_listar_datos();
+
                     //setTimeout(function(){ location.reload(); }, 2000);
 
 
@@ -43,7 +45,7 @@ function btn_listar_datos()
                 //el protocolo
                 type: "POST",
                 //a donde quiero mandar el objeto
-                url: "http://localhost/didede/index.php/Asociacion/listar_datos",    
+                url: "http://localhost/didede/index.php/Solicitud/listar_datos",    
                 data: ob,
 
                 //que quieres mostrar como recargable al iniciar
@@ -148,7 +150,7 @@ function btn_guardar_edicion()
 }
 
 
-function btn_buscar_solicitud()
+function btn_buscar()
 {
 
     var palabra = $("#dato_buscado").val();
@@ -158,7 +160,37 @@ function btn_buscar_solicitud()
                     //el protocolo
                     type: "POST",
                     //a donde quiero mandar el objeto
-                    url: url_p+"Asociacion/buscar_en_bd",    
+                    url: "http://localhost/didede/index.php/asociacion/buscar_en_bd",    
+                    data: obj,
+                    //que quieres mostrar como recargable al iniciar
+                    beforeSend: function(objeto){
+                        
+                    },
+
+    
+                    //al finalizar
+                    success: function(data)
+                    {
+                        $("#panel_registrar_s").html(data);
+                       
+                    }
+                });
+                console.log(obj);
+
+}
+function btn_buscar_s()
+{
+
+    var palabra = $(".mibuscador_s").val();
+    var tabla_s=document.getElementById("panel_mostrar_asoc")
+    tabla_s.style.display="block";
+    console.log(palabra);
+    var obj= {palabra:palabra};
+        $.ajax({
+                    //el protocolo
+                    type: "POST",
+                    //a donde quiero mandar el objeto
+                    url: "http://localhost/didede/index.php/asociacion/buscar_en_bds",    
                     data: obj,
     
                     //que quieres mostrar como recargable al iniciar
@@ -169,16 +201,29 @@ function btn_buscar_solicitud()
                     //al finalizar
                     success: function(data)
                     {
-                        $("#panel_listado").html(data);
+                        $("#panel_mostrar_asoc").html(data);
                        
                     }
                 });
 }
 
-
+function btn_seleccionar(idAsociacion_s,nombre_s)
+{
+   
+    var idAsoc = document.getElementById("idAsociacion_s");
+    console.log(idAsoc)
+    var nombre_asoc =document.querySelector(".mibuscador_s")
+    nombre_asoc.value=nombre_s;
+    console.log(nombre_asoc)
+    idAsoc.value=idAsociacion_s;
+    var tabla_s=document.getElementById("panel_mostrar_asoc")
+    tabla_s.style.display="none";
+    console.log(tabla_s)
+}
 //modal para registrar
 
-function btn_modal_para_registrar(){
+function btn_registrar_solicitud()
+{
     
     console.log('click');
     var ob= "";
@@ -186,7 +231,7 @@ function btn_modal_para_registrar(){
                     //el protocolo
                     type: "POST",
                     //a donde quiero mandar el objeto
-                    url: "http://localhost/didede/index.php/Solicitud/subir_modal",    
+                    url: "http://localhost/didede/index.php/solicitud/subir_modal_solic",    
                     data: ob,
     
                     //que quieres mostrar como recargable al iniciar
@@ -195,7 +240,7 @@ function btn_modal_para_registrar(){
                     success: function(data)
                     {
                         
-                        $("#panel_registrar").html(data);
+                        $("#panel_registrar_s").html(data);
                        
                     }
                 });

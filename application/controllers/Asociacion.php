@@ -169,6 +169,18 @@ class Asociacion extends CI_Controller
 
 		$this->load->view('asociacion/option', $data);
 	}
+	public function buscar_en_bds()
+	{
+	
+		// aca empieza
+
+		$palabra_buscar = $_POST['palabra'];
+
+		$data ["opcion"]="buscador_s";
+		$data ["asociaciondeportiva"]= $this->asociacion_model->buscar($palabra_buscar);
+
+		$this->load->view('asociacion/option', $data);
+	}
 
 	//cargar el formulario al modal
 

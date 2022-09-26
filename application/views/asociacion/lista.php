@@ -42,12 +42,12 @@
                       $logo=$row->logo;
                       if($logo==""){
                       ?>
-                     <img src="<?php echo base_url();?>/uploads/user.jpeg" style="width:80px; heigth: 80px;">
+                     <img src="<?php echo base_url();?>/uploads/user.jpeg" style="width:60px; heigth: 60px;">
                      <?php
                       }else
                      {
                      ?>
-                     <img src="<?php echo base_url();?>./uploads/<?php echo $logo;?>" style="width:80px; heigth: 80px;">
+                     <img src="<?php echo base_url();?>./uploads/<?php echo $logo;?>" style="width:60px; heigth: 60px;">
                      <?php
 
                      }

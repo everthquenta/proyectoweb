@@ -176,6 +176,7 @@ function btn_buscar()
 }
 
 
+
 //modal para registrar
 
 function btn_modal_para_ingresar(){

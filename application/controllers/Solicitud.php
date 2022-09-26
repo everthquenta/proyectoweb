@@ -32,53 +32,29 @@ class Solicitud extends CI_Controller
 
 		//lo cargamos a un array relacional
 		$data["opcion"] = "listar";
-		$data["asociaciones"] = $this->asociacion_model->l_asociacion();
+		$data["solicitud"] = $this->solicitud_model->l_solicitud();
 		
 			 
 			// "medicamentos" => $this->Mmedicamento->listar_medicamentos(
 
-		$this->load->view('asociacion/option', $data);
+		$this->load->view('solicitud/s_option', $data);
 	}
 
 
-	public function agregar_bd()
+	public function agregar_bd_solic()
 	{
-		$data['nombre'] = $_POST['nombre'];
-		$data['direccion'] = $_POST['direccion'];
-		$data['telefono'] = $_POST['telefono'];
-		$data['correo'] = $_POST['correo'];
-        $data['fechaPersJuridica'] = $_POST['fechaPersJuridica'];
+		$data['idAsociacion'] = $_POST['idAsociacion'];
+		$data['hojaRuta'] = $_POST['hojaRuta'];
+		$data['remitente'] = $_POST['remitente'];
+		$data['campeonato'] = $_POST['campeonato'];
+		$data['referencia'] = $_POST['referencia'];
 
-		$nombrearchivo=$idAsociacion.".jpg";
-		//Ruta donde se guarda el fichero
-		$config['upload_path']='./uploads/';
-		//Nombre del Archivo
-		$config['file_name']=$nombrearchivo;
-		//reemplazar los archivos
-		$direccion = "./uploads/".$nombrearchivo;
-		unlink($direccion);
-		$linkimg="user.jpg";
 		
-		//tipos de archivo permitidos
-		$config['allowed_types']='jpg|png|jpeg|gif'; //'jpeg'|
-		$this->load->library('upload',$config);
-
-		if(!$this->upload->do_upload())
-		{
-			//si hay algun error pasaremos la lista
-			$data['logo']=$linkimg;
-			
-		}
-		else{
-			$data['logo']=$nombrearchivo;
-			
-			
-		}
 		// echo $fechaCreacion;
 
 		// $lista = $this->Mmedicamento->agregar_medicamento($data);
-		$lista = $this->asociacion_model->agregarasociacion($data);
-		$this->upload->data();
+		$lista = $this->solicitud_model->add_solicitud($data);
+		
 	}
 
 	public function eliminar()
@@ -157,42 +133,22 @@ class Solicitud extends CI_Controller
 		$this->upload->data();
 	}
 
-	public function buscar_en_bd($pag = 1)
+	public function buscar_en_bd()
 	{
-		$pag--;
-
-		if ($pag < 0) {
-			$pag = 0;
-		}
-
-
-		$pag_size = 3;
-		$offset = $pag * $pag_size;
-
-		$lista = $this->Asociacion->pagination($pag_size, $offset);
-		$data['asociacion'] = $lista;
-
-
-		// aca empieza
-
 		$palabra_buscar = $_POST['palabra'];
 
-		$data = array(
-			"opcion" => "buscador",
-			"asociacion" => $this->Asociacion->buscar($palabra_buscar),
-			'last_pag' => ceil($this->Asociacion->count() / $pag_size),
-			'current_pag' => $pag,
+		$data ["opcion"]="buscador_s";
+		$data ["asociaciondep"]= $this->asociacion_model->buscar($palabra_buscar);
 
-		);
-		$this->load->view('asociacion/VO_medicamento', $data);
+		$this->load->view('solicitud/option', $data);
 	}
 
 	//cargar el formulario al modal
 
-	public function subir_modal()
+	public function subir_modal_solic()
 	{
 
-		$data["opcion"] ="formulario"; 
+		$data["opcion"] ="s_formulario"; 
 		$this->load->view('solicitud/s_option', $data);
 	}
 

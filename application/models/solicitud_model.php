@@ -10,13 +10,16 @@ class Solicitud_model extends CI_Model
 		$this->db->from('solicitud s'); //tabla
 		$this->db->join('asociacion a', 'a.idAsociacion=s.idAsociacion'); //tabla
 		$this->db->where('a.estado', '1');
+		$this->db->where('s.estado', '1');
+		$this->db->order_by('s.idsolicitud','desc');
+
 		
 		return $this->db->get();	//devolucion del resultado de la consulta
 	}
 
-	public function agregarasociacion($data)
+	public function add_solicitud($data)
 	{
-		$this->db->insert('asociacion', $data);
+		$this->db->insert('solicitud', $data);
 	}
 
 	public function eliminarasociacion($idAsociacion,$data)

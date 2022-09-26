@@ -23,6 +23,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<link rel="stylesheet" href="<?php echo base_url(); ?>admilte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 	<!-- Theme style -->
 	<link rel="stylesheet" href="<?php echo base_url(); ?>admilte/dist/css/adminlte.min.css">
+
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -150,6 +154,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 										<p>Solicitudes de Asociaciones</p>
 									</a>
 								</li>
+								<li class="nav-item">
+									<a href="<?php echo base_url(); ?>index.php/Solicitud/index" class="nav-link">
+										<i class="far fa-circle nav-icon"></i>
+										<p>Solicitudes de Rechazadas</p>
+									</a>
+								</li>
+								
 
 							</ul>
 						</li>

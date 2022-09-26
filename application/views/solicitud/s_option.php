@@ -231,44 +231,45 @@ if ($opcion == "buscador") {
     </nav>
     <!-- End Paginacion  -->
 
+   
 
   <?php
 }
-if ($opcion == "formulario") {
+if ($opcion == "s_formulario") {
   ?>
-    <div class="container">
+    <input type="text" class="mibuscador_s form-control border border-dark " name="" id="dato_buscado" aria-describedby="emailHelp" onkeyup="btn_buscar_s();" style="width:60%;display:inline;margin-top:.1em; margin-bottom:15px;" value="">
+    <input type="hidden" id="idAsociacion_s" >
+    
+    
+   
 
-
+    
       <!-- <div class="col-md-4 col-xs-12"> -->
+
       <div class="row">
-        <div class="col-12">
-          <label for="exampleInputEmail1" class="form-label">ASOCIACION DEPORTIVA</label>
-          <input type="text" class="form-control" required name="nombre" id="nombre" aria-describedby="emailHelp">
+        <div class="col-6">
+          <label for="exampleInputEmail1" class="form-label">HOJA DE RUTA</label>
+          <input type="text" class="form-control" required name="hojaRuta" id="hojaRuta" aria-describedby="emailHelp">
         </div>
 
-        <div class="col-lg-12">
-          <label for="exampleInputEmail1" class="form-label">DIRECCION DE LA ASOCIACION</label>
-          <input type="text" class="form-control" required name="direccion" id="direccion" aria-describedby="emailHelp">
+        <div class="col-lg-6">
+          <label for="exampleInputEmail1" class="form-label">REMITENTE</label>
+          <input type="text" class="form-control" required name="remitente" id="remitente" aria-describedby="emailHelp">
         </div>
         <div class="col-6">
-          <label for="exampleInputEmail1" class="form-label">TELEFONO</label>
-          <input type="text" class="form-control" name="telefono" id="telefono" aria-describedby="emailHelp">
+          <label for="exampleInputEmail1" class="form-label">CAMPEONATO</label>
+          <input type="text" class="form-control" name="campeonato" id="campeonato" aria-describedby="emailHelp">
         </div>
         <div class="col-lg-6">
-          <label for="exampleInputEmail1" class="form-label">CORREO</label>
-          <input type="email" class="form-control" required name="correo" id="correo" aria-describedby="emailHelp">
+          <label for="exampleInputEmail1" class="form-label">REFERENCIA</label>
+          <input type="email" class="form-control" required name="referencia" id="referencia" aria-describedby="emailHelp">
         </div>
-        <div class="col-lg-12">
-          <label for="exampleInputEmail1" class="form-label">FECHA DE PERSONERIA JURIDICA</label>
-          <input type="date" class="form-control" required name="fechaPersJuridica" id="fechaPersJuridica" aria-describedby="emailHelp">
-        </div>
-        <div class="col-lg-6">
-          <label for="exampleInputEmail1" class="form-label">LOGO</label>
-          <input type="file"    name="userfile"  >
-        </div>
+        <br>
+        <br>
         
         
-
+        
+        <script src="<?php echo base_url(); ?>./scripts/c_solicitud.js"></script>
 
       </div>
     </div>

@@ -29,12 +29,12 @@ if ($opcion == "listar") { ?>
                       $logo=$row->logo;
                       if($logo==""){
                       ?>
-                     <img src="<?php echo base_url();?>/uploads/user.jpeg" style="width:80px; heigth: 80px;">
+                     <img src="<?php echo base_url();?>/uploads/user.jpeg" style="width:60px; heigth: 60px;">
                      <?php
                       }else
                      {
                      ?>
-                     <img src="<?php echo base_url();?>./uploads/<?php echo $logo;?>" style="width:80px; heigth: 80px;">
+                     <img src="<?php echo base_url();?>./uploads/<?php echo $logo;?>" style="width:60px; heigth: 60px;">
                      <?php
 
                      }
@@ -129,7 +129,8 @@ if ($opcion == "editar") {
     <?php
   }
 }
-if ($opcion == "buscador") {
+if ($opcion == "buscador")
+{
     ?>
 
 
@@ -208,6 +209,62 @@ if ($opcion == "buscador") {
 
             </tbody>
         </table>
+       
+        
+        <?php
+}
+
+if ($opcion == "buscador_s") {
+    ?>
+ <table class="table table-bordered" style="overflow-y:scroll; heigth:60px; border-color:#061B3D !important">
+            <thead class="text-white " style="border-bottom:none; background:#197E6A;">
+                <tr>
+                <th>#</th> 
+                  <th>LOGO</th> 
+                  <th>ASOCIACION DEPORTIVA</th>
+                
+                  
+                </tr>
+            </thead>
+            <tbody>
+
+                <?php
+                $indice = 0;
+                foreach ($asociaciondeportiva->result() as $row) {
+                    $idAsociacion = $row->idAsociacion;
+                ?>
+                    <tr>
+                    <th scope="row"><?php $indice++;
+                                        echo $indice;
+                                        ?></th>
+                    
+                     </td>
+                     
+                     </td>
+                        <td><?php echo $row->nombre;
+                            ?> </td>
+
+                            <td scope="col">
+
+
+                            <button type="button" class="btn btn-outline-primary"  onclick="btn_seleccionar('<?php echo $idAsociacion; ?>','<?php echo $row->nombre; ?>');">+</button>
+
+                            </td>
+                            <!-- </button> -->
+                        </td>
+
+                    </tr>
+
+                <?php
+                }
+                ?>
+
+
+            </tbody>
+        </table>
+      
+
+    
 
     <!-- Paginacion  -->
   
@@ -368,7 +425,7 @@ if($opcion=="info"){?>
                       if($logo==""){
                       ?>
                       <center>
-                        <img src="<?php echo base_url();?>/uploads/user.jpeg" style="width:100%; heigth: 100%;">
+                        <img src="<?php echo base_url();?>/uploads/user.jpeg" style="width:60%; heigth: 160%;">
 
                       </center>
                      <?php
@@ -376,7 +433,7 @@ if($opcion=="info"){?>
                      {
                      ?>
                      <center>
-                       <img src="<?php echo base_url();?>/uploads/<?php echo $logo;?>" style="width:100%; heigth: 100%;">
+                       <img src="<?php echo base_url();?>/uploads/<?php echo $logo;?>" style="width:60%; heigth: 60%;">
 
                      </center>
                      <?php
