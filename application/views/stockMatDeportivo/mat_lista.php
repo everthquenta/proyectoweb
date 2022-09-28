@@ -5,7 +5,7 @@
     </div>
     <input type="text" class="form-control border border-dark " name="" id="dato_buscado" aria-describedby="emailHelp" onkeyup="btn_buscar();" style="width:60%;display:inline;margin-top:.1em; margin-bottom:15px;">
     <button type="button" class="btn border border-primary " data-toggle="modal" > Buscar</button>
-    <button type="button" class="btn border border-dark" data-toggle="modal" data-target="#myModal_registrar" onclick="btn_modal_para_ingresar()">Registrar</button>
+    <button type="button" class="btn border border-dark" data-toggle="modal" data-target="#myModal_registrar_mat" onclick="btn_mod_ingresar_mat()">Registrar</button>
     <!-- <button type="button" class="btn btn-primary " onclick="btn_listar_datos();"> Listar</button> -->
 
     <!-- <button type="button" class="btn border border-dark" data-bs-toggle="modal" data-target="#myModal_registrars" onclick="btn_modal_para_ingresar()" style="display:inline;">Agregar</button> -->
@@ -18,10 +18,13 @@
             <thead class="text-white " style="border-bottom:none; background:#197E6A;">
                 <tr>
                 <th>#</th> 
-                  <th>LOGO</th> 
-                  <th>ASOCIACION DEPORTIVA</th>
-                  <th>INFORMACION</th>  
-                  <th>EDITAR</th>  
+                  <th>MATERIAL DEPORTIVO</th> 
+                  <th>DETALLE</th>
+                  <th>STOCK</th>  
+                  <th>FECHA DE INGRESO</th>  
+                  <th>IMAGEN</th>
+                  <th>AÑADIR</th>
+                  <th>MODIFICAR</th>
                   <th>ELIMINAR</th>
                   
                 </tr>
@@ -30,48 +33,48 @@
 
                 <?php
                 $indice = 0;
-                foreach ($asociacion->result() as $row) {
-                    $idAsociacion = $row->idAsociacion;
+                foreach ($stockMatDeportivo->result() as $row) {
+                    $idStockMatDeportivo = $row->idStockMatDeportivo;
                 ?>
                     <tr>
                     <th scope="row"><?php $indice++;
                                         echo $indice;
                                         ?></th>
-                    <th scope="row">
-                         <?php
-                      $logo=$row->logo;
-                      if($logo==""){
-                      ?>
-                     <img src="<?php echo base_url();?>/uploads/user.jpeg" style="width:60px; heigth: 60px;">
-                     <?php
-                      }else
-                     {
-                     ?>
-                     <img src="<?php echo base_url();?>uploads/<?php echo $logo;?>" style="width:60px; heigth: 60px;">
-                     <?php
-
-                     }
-                     ?>
+                   
                      </th>
-                     </td>
-                        <td><?php echo $row->nombre;
-                            ?> </td>
+                        </td>
+                        <td><?php echo $row->tipomat;
+                         ?> </td>
+                         <td><?php echo $row->talla;
+                         ?> </td>
+                         <td><?php echo $row->stock;
+                         ?> </td>
+                         <td><?php echo $row->fechaRegistro;
+                         ?> </td>
+                        <td scope="col">
+                        <img src="<?php echo base_url();?>./img/medalla1.jpg" style="width:60px; heigth: 60px;">
+
+                        </td>
+
+
+
+
 
                             <td scope="col">
 
 
-                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal_info" onclick="btn_info('<?php echo $idAsociacion; ?>');">VER INFORMACION</button>
+                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal_info" onclick="btn_info('<?php echo $idStockMatDeportivo; ?>');">VER INFORMACION</button>
 
                             </td>
                         <td scope="col">
 
 
-                            <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal_editar" onclick="btn_editar('<?php echo $idAsociacion; ?>');">MODIFICAR</button>
+                            <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal_editar" onclick="btn_editar('<?php echo $idStockMatDeportivo; ?>');">MODIFICAR</button>
 
                         </td>
                         <td scope="col">
 
-                            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal_eliminar" onclick="btn_eliminar('<?php echo $idAsociacion; ?>');">ELIMINAR</button>
+                            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal_eliminar" onclick="btn_eliminar('<?php echo $idStockMatDeportivo; ?>');">ELIMINAR</button>
 
                             <!-- <button type="button" class="btn btn-outline-danger" onclick="btn_eliminar('<?php //echo $idConductor; 
                                                                                                                 ?>');"> -->
@@ -185,13 +188,13 @@
 
 <!-- Modal -->
 
-<div class="modal fade" id="myModal_registrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal_registrar_mat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
     <form>
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header " style=" background:#061B3D">
-                    <h5 class="modal-title text-white">Registrar Asociacion Deportiva</h4>
+                    <h5 class="modal-title text-white">Registrar Material Deportivo</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -202,7 +205,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary" id="guardar" onclick="btn_guardar_datos();" data-dismiss="modal">Guardar</button>
+                    <button type="submit" class="btn btn-primary" id="guardar" onclick="btn_guardar_datos_mat();" data-dismiss="modal">Guardar</button>
                 </div>
             </div>
         </div>
@@ -255,4 +258,4 @@
     </div>
 
 </div>
-<script src="<?php echo base_url(); ?>scripts/c_asociacion.js"></script>
+<script src="<?php echo base_url(); ?>scripts/c_stockMatDeportivo.js"></script>

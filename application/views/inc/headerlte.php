@@ -70,7 +70,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		<aside class="main-sidebar  elevation-4" style="background:#3D4246">
 			<!-- Brand Logo -->
 			
-				<a href="../../index3.html" class="brand-link pb-20 mb-20 d-flex" heigth="200px">
+				<a href="../img/logoinstitucional.png" class="brand-link pb-20 mb-20 d-flex" heigth="200px">
 					<img src="<?php echo base_url(); ?>img/logoinstitucional.png" alt="AdminLTE Logo"  style="opacity: .9; width:65px; heigth: 65px;" >
 					
 					<div><span class="brand-text font-weight-light text-white"><h1>DIDEDE</h1></span></div>
@@ -139,6 +139,40 @@ defined('BASEPATH') or exit('No direct script access allowed');
 								</li>
 							</ul>
 						</li>
+
+
+						<li class="nav-item menu-open">
+							<a href="#" class="nav-link active">
+								<i class="nav-icon fas fa-table"></i>
+								<p>
+									MATERIAL DEPORTIVO
+									<i class="fas fa-angle-left right"></i>
+								</p>
+							</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a href="<?php echo base_url(); ?>index.php/stockMatDeportivo/index" class="nav-link">
+										<i class="far fa-circle nav-icon"></i>
+										<p>trofeos y medallas</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="<?php echo base_url(); ?>index.php/Asociacion/subir_modal" class="nav-link ">
+										<i class="far fa-circle nav-icon"></i>
+										<p>Registrar Asociacion Deportiva</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="<?php echo base_url(); ?>index.php/Asociacion/desabilitados" class="nav-link">
+										<i class="far fa-circle nav-icon"></i>
+										<p>Asociaciones sin personeria Juridica</p>
+									</a>
+								</li>
+							</ul>
+						</li>
+
+
+
 						<li class="nav-item menu-open">
 							<a href="#" class="nav-link  active">
 								<i class="nav-icon fas fa-table"></i>

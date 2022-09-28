@@ -1,14 +1,17 @@
 <?php
 
-if ($opcion == "listar") { ?>
+if ($opcion == "listar_mat") { ?>
  <table class="table table-bordered" style="border-color:#061B3D !important">
             <thead class="text-white " style="border-bottom:none; background:#197E6A;">
                 <tr>
                 <th>#</th> 
-                  <th>LOGO</th> 
-                  <th>ASOCIACION DEPORTIVA</th>
-                  <th>INFORMACION</th>  
-                  <th>EDITAR</th>  
+                  <th>MATERIAL DEPORTIVO</th> 
+                  <th>DETALLE</th>
+                  <th>STOCK</th>  
+                  <th>FECHA DE INGRESO</th>  
+                  <th>IMAGEN</th>
+                  <th>AÑADIR</th>
+                  <th>MODIFICAR</th>
                   <th>ELIMINAR</th>
                   
                 </tr>
@@ -17,48 +20,48 @@ if ($opcion == "listar") { ?>
 
                 <?php
                 $indice = 0;
-                foreach ($asociaciones->result() as $row) {
-                    $idAsociacion = $row->idAsociacion;
+                foreach ($stockMatDeportivolista->result() as $row) {
+                    $idStockMatDeportivo = $row->idStockMatDeportivo;
                 ?>
                     <tr>
                     <th scope="row"><?php $indice++;
                                         echo $indice;
                                         ?></th>
-                    <th scope="row">
-                         <?php
-                      $logo=$row->logo;
-                      if($logo==""){
-                      ?>
-                     <img src="<?php echo base_url();?>/uploads/user.jpeg" style="width:60px; heigth: 60px;">
-                     <?php
-                      }else
-                     {
-                     ?>
-                     <img src="<?php echo base_url();?>./uploads/<?php echo $logo;?>" style="width:60px; heigth: 60px;">
-                     <?php
-
-                     }
-                     ?>
+                   
                      </th>
-                     </td>
-                        <td><?php echo $row->nombre;
-                            ?> </td>
+                        </td>
+                        <td><?php echo $row->tipomat;
+                         ?> </td>
+                         <td><?php echo $row->talla;
+                         ?> </td>
+                         <td><?php echo $row->stock;
+                         ?> </td>
+                         <td><?php echo $row->fechaRegistro;
+                         ?> </td>
+                        <td scope="col">
+                        <img src="<?php echo base_url();?>./img/medalla1.jpg" style="width:60px; heigth: 60px;">
+
+                        </td>
+
+
+
+
 
                             <td scope="col">
 
 
-                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal_info" onclick="btn_info('<?php echo $idAsociacion; ?>');">VER INFORMACION</button>
+                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal_info" onclick="btn_info('<?php echo $idStockMatDeportivo; ?>');">VER INFORMACION</button>
 
                             </td>
                         <td scope="col">
 
 
-                            <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal_editar" onclick="btn_editar('<?php echo $idAsociacion; ?>');">MODIFICAR</button>
+                            <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal_editar" onclick="btn_editar('<?php echo $idStockMatDeportivo; ?>');">MODIFICAR</button>
 
                         </td>
                         <td scope="col">
 
-                            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal_eliminar" onclick="btn_eliminar('<?php echo $idAsociacion; ?>');">ELIMINAR</button>
+                            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal_eliminar" onclick="btn_eliminar('<?php echo $idStockMatDeportivo; ?>');">ELIMINAR</button>
 
                             <!-- <button type="button" class="btn btn-outline-danger" onclick="btn_eliminar('<?php //echo $idConductor; 
                                                                                                                 ?>');"> -->
@@ -76,7 +79,6 @@ if ($opcion == "listar") { ?>
 
             </tbody>
         </table>
-
 
   <?php }
 
@@ -116,7 +118,7 @@ if ($opcion == "editar") {
         </div>
         <div class="col-lg-6">
           <label for="exampleInputEmail1" class="form-label">LOGO</label>
-          <input type="file" class="form-control" required name="userfile" id="logo_edi" aria-describedby="emailHelp" >
+          <input type="file" class="form-control" required name="logo" id="logo_edi" aria-describedby="emailHelp" >
         </div>
 
        
@@ -273,7 +275,7 @@ if ($opcion == "buscador_s") {
 
   <?php
 }
-if ($opcion == "formulario") {
+if ($opcion == "formulario_mat") {
   ?>
     <div class="container">
 
@@ -281,29 +283,22 @@ if ($opcion == "formulario") {
       <!-- <div class="col-md-4 col-xs-12"> -->
       <div class="row">
         <div class="col-12">
-          <label for="exampleInputEmail1" class="form-label">ASOCIACION DEPORTIVA</label>
-          <input type="text" class="form-control" required name="nombre" id="nombre" aria-describedby="emailHelp">
+          <label for="exampleInputEmail1" class="form-label">MATERIAL DEPORTIVO</label>
+          <input type="text" class="form-control" required name="tipomat" id="tipomat" aria-describedby="emailHelp">
         </div>
 
         <div class="col-lg-12">
-          <label for="exampleInputEmail1" class="form-label">DIRECCION DE LA ASOCIACION</label>
-          <input type="text" class="form-control" required name="direccion" id="direccion" aria-describedby="emailHelp">
+          <label for="exampleInputEmail1" class="form-label">UNIDAD DE MEDIDA</label>
+          <input type="text" class="form-control" required name="talla" id="talla" aria-describedby="emailHelp">
         </div>
         <div class="col-6">
-          <label for="exampleInputEmail1" class="form-label">TELEFONO</label>
-          <input type="text" class="form-control" name="telefono" id="telefono" aria-describedby="emailHelp">
+          <label for="exampleInputEmail1" class="form-label">CANTIDAD DEL MATERIAL</label>
+          <input type="text" class="form-control" name="stock" id="stock" aria-describedby="emailHelp">
         </div>
+        
         <div class="col-lg-6">
-          <label for="exampleInputEmail1" class="form-label">CORREO</label>
-          <input type="email" class="form-control" required name="correo" id="correo" aria-describedby="emailHelp">
-        </div>
-        <div class="col-lg-12">
-          <label for="exampleInputEmail1" class="form-label">FECHA DE PERSONERIA JURIDICA</label>
-          <input type="date" class="form-control" required name="fechaPersJuridica" id="fechaPersJuridica" aria-describedby="emailHelp">
-        </div>
-        <div class="col-lg-6">
-          <label for="exampleInputEmail1" class="form-label">LOGO</label>
-          <input type="file"    name="userfile"  >
+          <label for="exampleInputEmail1" class="form-label">IMAGEN DEL PRODUCTO</label>
+          <input type="file"    name="imgmat"  >
         </div>
         
         

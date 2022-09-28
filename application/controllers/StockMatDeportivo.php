@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Asociacion extends CI_Controller
+class StockMatDeportivo extends CI_Controller
 {
 
 	public function __construct()
@@ -12,12 +12,12 @@ class Asociacion extends CI_Controller
 	public function index()
 	{
 
-		$lista = $this->asociacion_model->l_asociacion();
-		$data['asociacion'] = $lista;
+		$lista = $this->stockMatDeportivo_model->l_stockMatDeportivo();
+		$data['stockMatDeportivo'] = $lista;
 
 
 		$this->load->view('inc/headerlte');
-		$this->load->view('asociacion/lista', $data);
+		$this->load->view('stockMatDeportivo/mat_lista', $data);
 		$this->load->view('inc/footerlte');
 	}
 
@@ -27,57 +27,56 @@ class Asociacion extends CI_Controller
 
 	
 
-	public function listar_datos()
+	public function listar_datos_mat()
 	{
 
 		//lo cargamos a un array relacional
-		$data["opcion"] = "listar";
-		$data["asociaciones"] = $this->asociacion_model->l_asociacion();
+		$data["opcion"] = "listar_mat";
+		$data["stockMatDeportivolista"] = $this->stockMatDeportivo_model->l_stockMatDeportivo();
 		
 			 
 			// "medicamentos" => $this->Mmedicamento->listar_medicamentos(
 
-		$this->load->view('asociacion/option', $data);
+		$this->load->view('StockMatDeportivo/mat_option', $data);
 	}
 
 
-	public function agregar_bd()
+	public function agregar_bd_mat()
 	{
-		$data['nombre'] = $_POST['nombre'];
-		$data['direccion'] = $_POST['direccion'];
-		$data['telefono'] = $_POST['telefono'];
-		$data['correo'] = $_POST['correo'];
-        $data['fechaPersJuridica'] = $_POST['fechaPersJuridica'];
+		$data['tipomat'] = $_POST['tipomat'];
+		$data['talla'] = $_POST['talla'];
+		$data['stock'] = $_POST['stock'];
+		$data['imgmat'] = $_POST['imgmat'];
 
-		$nombrearchivo=$idAsociacion.".jpg";
+		$nombrearchivo_mat="mat".$idStockMatDeportivo.".jpg";
 		//Ruta donde se guarda el fichero
-		$config['upload_path']='./uploads';
+		$config['upload_path']='./uploads/';
 		//Nombre del Archivo
 		$config['file_name']=$nombrearchivo;
 		//reemplazar los archivos
-		$direccion = "./uploads".$nombrearchivo;
+		$direccion = "./uploads/".$nombrearchivo_mat;
 		unlink($direccion);
-		$linkimg="user.jpg";
+		$linkimg="mat.jpg";
 		
 		//tipos de archivo permitidos
-		$config['allowed_types']='jpg|png|jpeg|gif'; //'jpeg'|
+		$config['allowed_types']='jpg'; //'jpeg'|
 		$this->load->library('upload',$config);
 
 		if(!$this->upload->do_upload())
 		{
 			//si hay algun error pasaremos la lista
-			$data['logo']=$linkimg;
+			$data['imgmat']=$linkimg;
 			
 		}
 		else{
-			$data['logo']=$nombrearchivo;
+			$data['imgmat']=$nombrearchivo_mat;
 			
 			
 		}
 		// echo $fechaCreacion;
 
 		// $lista = $this->Mmedicamento->agregar_medicamento($data);
-		$lista = $this->asociacion_model->agregarasociacion($data);
+		$lista = $this->stockMatDeportivo_model->agregarstockMatDeportivo($data);
 		$this->upload->data();
 	}
 
@@ -131,34 +130,30 @@ class Asociacion extends CI_Controller
         $data['fechaPersJuridica'] = $_POST['fechaPersJuridica'];
 
 		$nombrearchivo=$idAsociacion.".jpg";
-		$config['upload_path']='./uploads';
+		$config['upload_path']='./uploads/';
 		$config['file_name']=$nombrearchivo;
-		$direccion ="./uploads/".$nombrearchivo;
+		$direccion = "./uploads/".$nombrearchivo;
 		$linkimg="user.jpg";
 		
-		if(file_exists($direccion))
-			{
-				unlink($direccion);
-			}
 			
+			unlink($direccion);
 		
 		$config['allowed_types']='jpg';
 		$this->load->library('upload',$config);
 
 		if(!$this->upload->do_upload())
 		{
-			//$data['logo']=$linkimg;
-			$data['logo']=$this->upload->display_errors();
-			//echo 'ingrese una  de extención jpg';
+			$data['logo']=$linkimg6;
+			echo 'ingrese una  de extención jpg';
 		}
 		else
 		{
 			$data['logo']=$nombrearchivo;
-			$this->upload->data();
 			
 		}
 
 		$this->asociacion_model->modificarasociacion($idAsociacion, $data);
+		$this->upload->data();
 	}
 
 	public function buscar_en_bd()
@@ -169,7 +164,7 @@ class Asociacion extends CI_Controller
 		$palabra_buscar = $_POST['palabra'];
 
 		$data ["opcion"]="buscador";
-		$data ["asociaciondep"]=$this->asociacion_model->buscar($palabra_buscar);
+		$data ["asociaciondep"]= $this->asociacion_model->buscar($palabra_buscar);
 
 		$this->load->view('asociacion/option', $data);
 	}
@@ -188,11 +183,11 @@ class Asociacion extends CI_Controller
 
 	//cargar el formulario al modal
 
-	public function subir_modal()
+	public function subir_mod_mat()
 	{
 
-		$data["opcion"] ="formulario"; 
-		$this->load->view('asociacion/option', $data);
+		$data["opcion"] ="formulario_mat"; 
+		$this->load->view('stockMatDeportivo/mat_option', $data);
 	}
 
 	public function cerrar_session()

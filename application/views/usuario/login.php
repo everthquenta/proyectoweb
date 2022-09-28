@@ -19,13 +19,13 @@
     
 </head>
 <body>
-<div class="container">
+<div class="container" aling="center">
     <br>
     
-	<div class="d-flex justify-content-center h-100">
-		<div class="card">
+	<div class="d-flex justify-content-center h-100" aling="center">
+		<div class="card" aling="center">
 			<div class="card-header">
-				<h3>DIDEDE</h3>
+				<h3>DIDEDEs</h3>
 				<div class="d-flex justify-content-end social_icon">
 					<span><i class="fab fa-facebook-square"></i></span>
 					<span><i class="fab fa-google-plus-square"></i></span>
