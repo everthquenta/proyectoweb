@@ -190,7 +190,7 @@ function btn_buscar_s()
                     //el protocolo
                     type: "POST",
                     //a donde quiero mandar el objeto
-                    url: "http://localhost/didede/index.php/asociacion/buscar_en_bds",    
+                    url: "http://localhost/didede/index.php/solicitud/buscar_en_bds",    
                     data: obj,
     
                     //que quieres mostrar como recargable al iniciar
@@ -201,24 +201,24 @@ function btn_buscar_s()
                     //al finalizar
                     success: function(data)
                     {
-                        $("#panel_mostrar_asoc").html(data);
+                        $("#tablabusqueda").html(data);
                        
                     }
                 });
 }
 
-function btn_seleccionar(idSolicitud_s,nombre,campeonato_a, referencia_s,hojaRuta_a)
+function btn_seleccionar_s(idSolicitud_s,nombre_s,hojaRuta_s, campeonato_s,referencia_s)
 {
    
-    var idAsoc = document.getElementById("idSolicitud_s");
-    console.log(idAsoc)
-    var nombre_asoc =document.querySelector(".mibuscador_s")
+    var idAsoc = document.getElementById("idAsociacion_s");
+    console.log(idAsoc);
+    var nombre_asoc =document.querySelector(".mibuscador_s");
     nombre_asoc.value=nombre_s;
-    var campeonato_a =document.querySelector("#campeonato")
-    campeonato.value=campeonato_a;
-    console.log(nombre_asoc)
-    idAsoc.value=idAsociacion_s;
-    var tabla_s=document.getElementById("panel_mostrar_asoc")
+    console.log(nombre_asoc);
+    var campeonato_sol =document.querySelector("#campeonato");
+    console.log(nombre_asoc);
+    
+    var tabla_s=document.getElementById(".mibuscador");
     tabla_s.style.display="none";
     console.log(tabla_s)
 }

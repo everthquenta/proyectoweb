@@ -202,15 +202,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 							<a href="#" class="nav-link  active">
 								<i class="nav-icon fas fa-table"></i>
 								<p>
-									Solicitudes aceptadas
+									APOYOS
 									<i class="fas fa-angle-left right"></i>
 								</p>
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="<?php echo base_url(); ?>index.php/Tarjeta/index" class="nav-link">
+									<a href="<?php echo base_url(); ?>index.php/Apoyo/index" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Solicitudes Rechazados</p>
+										<p>APOYOS</p>
 									</a>
 								</li>
 

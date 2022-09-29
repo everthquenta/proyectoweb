@@ -1,10 +1,10 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Solicitud_model extends CI_Model
+class Apoyo_model extends CI_Model
 {
 
-	public function l_solicitud()
+	public function l_apoyo()
 	{
 		$this->db->select('s.hojaRuta, a.nombre, s.remitente, s.campeonato, s.idSolicitud'); //select*
 		$this->db->from('solicitud s'); //tabla
@@ -49,14 +49,5 @@ class Solicitud_model extends CI_Model
 		$this->db->where('estado', '0');
 		return $this->db->get();	//devolucion del resultado de la consulta
 	}
-	public function buscar($palabra_buscar)
-	{
-		$this->db->select('*'); //select*
-		$this->db->from('solicitud'); //tabla
-		$this->db->where('estado', '1');
-		$this->db->like('hojaRuta', $palabra_buscar);
-		$this->db->or_like('idSolicitud', $palabra_buscar);
-		
-		return $this->db->get();	//devolucion del resultado de la consulta
-	}
+	
 }

@@ -211,7 +211,7 @@ if ($opcion == "buscador")
         </table>
        
         
-        <?php
+   <?php
 }
 
 if ($opcion == "buscador_s") {
@@ -245,10 +245,7 @@ if ($opcion == "buscador_s") {
                             ?> </td>
 
                             <td scope="col">
-
-
                             <button type="button" class="btn btn-outline-primary"  onclick="btn_seleccionar('<?php echo $idAsociacion; ?>','<?php echo $row->nombre; ?>');">+</button>
-
                             </td>
                             <!-- </button> -->
                         </td>

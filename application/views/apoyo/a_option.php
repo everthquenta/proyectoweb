@@ -231,60 +231,7 @@ if ($opcion == "buscador") {
     </nav>
     <!-- End Paginacion  -->
 
-
-
-
-    <?php
-}
-
-if ($opcion == "buscador_s") {
-    ?>
- <table class="table table-bordered" style="border-color:#061B3D !important width: 50px;">
-            <thead class="text-white " style="border-bottom:none; background:#197E6A;">
-
-                <tr>
-                <th width="5px">#</th> 
-                  <th>HR</th> 
-                  <th>REFERENCIA</th>  
-                  
-                  
-                </tr>
-            </thead>
-            <tbody>
-
-                <?php
-                $indice = 0;
-                foreach ($solicitudhoja->result() as $row) {
-                    $idSolicitud = $row->idSolicitud;
-                ?>
-                    <tr>
-                    <th scope="row" width=10px><?php $indice++;
-                                        echo $indice;
-                                        ?></th>
-                    
-                     </td width=10px>
-                        <td><?php echo $row->hojaRuta;
-                            ?> </td>
-
-                        <td><?php echo $row->referencia;
-                            ?> </td>
-                        
-                        
-                        
-
-                    </tr>
-                    <td scope="col">
-                            <button type="button" class="btn btn-outline-primary"  onclick="btn_seleccionar_s('<?php echo $idSolicitud; ?>','<?php echo $row->hojaRuta; ?>','<?php echo $row->campeonato; ?>','<?php echo $row->referencia; ?>');" >+</button>
-                     </td>
-
-                <?php
-                }
-
-                ?>
-
-
-            </tbody>
-        </table>  
+   
 
   <?php
 }
@@ -487,5 +434,4 @@ if($opcion=="info"){?>
         </table>
 <?php
 }
-
 

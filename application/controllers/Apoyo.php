@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Solicitud extends CI_Controller
+class Apoyo extends CI_Controller
 {
 
 	public function __construct()
@@ -12,12 +12,12 @@ class Solicitud extends CI_Controller
 	public function index()
 	{
 
-		$lista = $this->solicitud_model->l_solicitud();
-		$data['solicitud'] = $lista;
+		$lista = $this->apoyo_model->l_apoyo();
+		$data['apoyo'] = $lista;
 
 
 		$this->load->view('inc/headerlte');
-		$this->load->view('solicitud/s_lista', $data);
+		$this->load->view('apoyo/a_lista', $data);
 		$this->load->view('inc/footerlte');
 	}
 
@@ -192,14 +192,10 @@ class Solicitud extends CI_Controller
 		$this->load->view('asociacion/sinpersoneria', $data);
 		$this->load->view('inc/footerlte');
 	}
-	public function buscar_en_bds()
-	{
-		// aca empieza
-		$palabra_buscar = $_POST['palabra'];
-
-		$data ["opcion"]="buscador_s";
-		$data ["solicitudhoja"]= $this->solicitud_model->buscar($palabra_buscar);
-
-		$this->load->view('solicitud/s_option', $data);
-	}
+	public function BuscarSolicitud()
+    {
+        $idSolicitud = $_POST['idSolicitud'];
+        $data = $this->model->buscarSolicitud($idSolicitud);
+        echo json_encode($data);
+    }
 }
