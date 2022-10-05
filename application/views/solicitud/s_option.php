@@ -243,9 +243,17 @@ if ($opcion == "buscador_s") {
             <thead class="text-white " style="border-bottom:none; background:#197E6A;">
 
                 <tr>
-                <th width="5px">#</th> 
-                  <th>HR</th> 
-                  <th>REFERENCIA</th>  
+                <div class="col-lg-1">
+                <th >#</th>
+                </div>
+                <div class="col-lg-1">
+                <th width="8px">HR</th>
+                </div>
+                <div class="col-lg-1">
+                <th>REFERENCIA</th>  
+                
+                </div>
+                   
                   
                   
                 </tr>
@@ -268,20 +276,22 @@ if ($opcion == "buscador_s") {
 
                         <td><?php echo $row->referencia;
                             ?> </td>
+                            
                         
                         
                         
 
-                    </tr>
+                    
                     <td scope="col">
-                            <button type="button" class="btn btn-outline-primary"  onclick="btn_seleccionar_s('<?php echo $idSolicitud; ?>','<?php echo $row->hojaRuta; ?>','<?php echo $row->campeonato; ?>','<?php echo $row->referencia; ?>');" >+</button>
+                            <button type="button" class="btn btn-outline-primary"  onclick="btn_seleccionar_solic('<?php echo $idSolicitud; ?>','<?php echo $row->hojaRuta; ?>','<?php echo $row->remitente; ?>','<?php echo $row->campeonato; ?>','<?php echo $row->referencia; ?>','<?php echo $row->idAsociacion; ?>');" >+</button>
                      </td>
 
                 <?php
                 }
 
                 ?>
-
+                <script src="<?php echo base_url(); ?>./scripts/c_apoyo.js"></script>
+                
 
             </tbody>
         </table>  

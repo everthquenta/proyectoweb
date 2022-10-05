@@ -83,10 +83,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<!-- Sidebar user (optional) -->
 				<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 					<div class="image">
-						<img src="<?php echo base_url(); ?>admilte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+						<img src="<?php echo base_url(); ?>admilte/dist/img/credit/didede.jpg" class="img-circle elevation-2" alt="User Image">
 					</div>
 					<div class="info">
-						<a href="#" class="d-block text-white">Administrador</a>
+						<a href="#" class="d-block text-white"><h4><?php echo $this->session->userdata('login')?></h4></a>
+						<a href="#" class="d-block text-white"><h4><?php echo $this->session->userdata('tipo')?></h4></a>
 					</div>
 				</div>
 
@@ -144,6 +145,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						<li class="nav-item menu-open">
 							<a href="#" class="nav-link active">
 								<i class="nav-icon fas fa-table"></i>
+									
 								<p>
 									MATERIAL DEPORTIVO
 									<i class="fas fa-angle-left right"></i>
@@ -156,20 +158,23 @@ defined('BASEPATH') or exit('No direct script access allowed');
 										<p>trofeos y medallas</p>
 									</a>
 								</li>
+						<?php if($this->session->userdata('tipo')=='admin'){?>
+
 								<li class="nav-item">
 									<a href="<?php echo base_url(); ?>index.php/Asociacion/subir_modal" class="nav-link ">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Registrar Asociacion Deportiva</p>
+										<p>Material de competitivo</p>
 									</a>
 								</li>
 								<li class="nav-item">
 									<a href="<?php echo base_url(); ?>index.php/Asociacion/desabilitados" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Asociaciones sin personeria Juridica</p>
+										<p>Materiales almacen</p>
 									</a>
 								</li>
 							</ul>
 						</li>
+						<?php }?>
 
 
 
@@ -221,7 +226,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				</nav>
 				<!-- /.sidebar-menu -->
 			</div>
-			<!-- /.sidebar -->
+
+
+			
+						<!-- /.sidebar -->
 		</aside>
 
 		<!-- Content Wrapper. Contains page content -->

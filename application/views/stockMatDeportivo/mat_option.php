@@ -216,15 +216,18 @@ if ($opcion == "buscador")
         <?php
 }
 
-if ($opcion == "buscador_s") {
+if ($opcion == "buscador_mat") {
     ?>
- <table class="table table-bordered" style="overflow-y:scroll; heigth:60px; border-color:#061B3D !important">
+ <table class="table table-bordered" style="border-color:#061B3D !important">
             <thead class="text-white " style="border-bottom:none; background:#197E6A;">
                 <tr>
                 <th>#</th> 
-                  <th>LOGO</th> 
-                  <th>ASOCIACION DEPORTIVA</th>
-                
+                  <th>MATERIAL DEPORTIVO</th> 
+                  <th>DETALLE</th>
+                  <th>STOCK</th>  
+                  <th>FECHA DE INGRESO</th>  
+                  <th>IMAGEN</th>
+                 
                   
                 </tr>
             </thead>
@@ -232,39 +235,53 @@ if ($opcion == "buscador_s") {
 
                 <?php
                 $indice = 0;
-                foreach ($asociaciondeportiva->result() as $row) {
-                    $idAsociacion = $row->idAsociacion;
+                foreach ($stockMatDeportivo_mat->result() as $row) {
+                    $idStockMatDeportivo = $row->idStockMatDeportivo;
                 ?>
                     <tr>
                     <th scope="row"><?php $indice++;
                                         echo $indice;
                                         ?></th>
-                    
-                     </td>
-                     
-                     </td>
-                        <td><?php echo $row->nombre;
-                            ?> </td>
+                   
+                     </th>
+                        </td>
+                        <td><?php echo $row->tipomat;
+                         ?> </td>
+                         <td><?php echo $row->talla;
+                         ?> </td>
+                         <td><?php echo $row->stock;
+                         ?> </td>
+                         <td><?php echo $row->fechaRegistro;
+                         ?> </td>
+                        <td scope="col">
+                        <img src="<?php echo base_url();?>./img/medalla1.jpg" style="width:60px; heigth: 60px;">
+
+                        </td>
+
+
+
+
 
                             <td scope="col">
 
 
-                            <button type="button" class="btn btn-outline-primary"  onclick="btn_seleccionar('<?php echo $idAsociacion; ?>','<?php echo $row->nombre; ?>');">+</button>
+                            <button type="button" class="btn btn-outline-primary"  onclick="btn_seleccionar_mat('<?php echo $idStockMatDeportivo; ?>','<?php echo $row->tipomat; ?>','<?php echo $row->talla; ?>','<?php echo $row->stock; ?>');">+</button>
 
                             </td>
-                            <!-- </button> -->
-                        </td>
+                       
 
                     </tr>
+                        <script src="<?php echo base_url(); ?>scripts/c_stockMatDeportivo.js"></script>
+
 
                 <?php
                 }
+
                 ?>
 
 
             </tbody>
         </table>
-      
 
     
 

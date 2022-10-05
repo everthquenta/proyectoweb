@@ -55,7 +55,6 @@ class Solicitud_model extends CI_Model
 		$this->db->from('solicitud'); //tabla
 		$this->db->where('estado', '1');
 		$this->db->like('hojaRuta', $palabra_buscar);
-		$this->db->or_like('idSolicitud', $palabra_buscar);
 		
 		return $this->db->get();	//devolucion del resultado de la consulta
 	}

@@ -207,18 +207,16 @@ function btn_buscar_s()
                 });
 }
 
-function btn_seleccionar(idSolicitud_s,nombre,campeonato_a, referencia_s,hojaRuta_a)
+function btn_seleccionar(idAsociacion_s,nombre_s)
 {
    
-    var idAsoc = document.getElementById("idSolicitud_s");
-    console.log(idAsoc)
-    var nombre_asoc =document.querySelector(".mibuscador_s")
+    var idAsoc = document.getElementById("idAsociacion_s");
+    console.log(idAsoc);
+    var nombre_asoc =document.querySelector(".mibuscador_s");
     nombre_asoc.value=nombre_s;
-    var campeonato_a =document.querySelector("#campeonato")
-    campeonato.value=campeonato_a;
-    console.log(nombre_asoc)
+   
     idAsoc.value=idAsociacion_s;
-    var tabla_s=document.getElementById("panel_mostrar_asoc")
+    var tabla_s=document.getElementById("panel_mostrar_asoc");
     tabla_s.style.display="none";
     console.log(tabla_s)
 }

@@ -2,6 +2,31 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+
+
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+switch ($msg) {
+  case '1':
+    $mensaje = 'GRACIAS VUELVA PRONTUS';
+    break;
+    case '2':
+      $mensaje = 'USUARIO O PASWORD INCORRECTOS';
+
+      break;
+
+  default:
+    $mensaje = '';
+    $color = '';
+
+    break;
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>

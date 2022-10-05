@@ -144,19 +144,34 @@ function btn_guardar_edicion()
                     }
                 });
 }
+function btn_seleccionar_mat(idStockMatDeportivo,tipomat,talla,stock)
+{
+   
+    var materialdeportivo =document.querySelector(".mibuscador_mat");
+    materialdeportivo.value=tipomat;
+    console.log(materialdeportivo);
+    var talla_a =document.getElementById("talla");
+    talla_a.value=talla;
+    var stock_a =document.getElementById("stockmat");
+    stock_a.value=stock;
+    var stock_disponible =document.getElementById("cantstock");
+    stock_disponible.value=stock;
+    tabla_s.style.display="none";
+    console.log(tabla_s)
+}
 
 
-function btn_buscar()
+function btn_buscar_mat()
 {
 
-    var palabra = $("#dato_buscado").val();
+    var palabra = $(".mibuscador_mat").val();
     console.log(palabra);
     var obj= {palabra:palabra};
         $.ajax({
                     //el protocolo
                     type: "POST",
                     //a donde quiero mandar el objeto
-                    url: "http://localhost/didede/index.php/Asociacion/buscar_en_bd",    
+                    url: "http://localhost/didede/index.php/StockMatDeportivo/buscar_en_bd_mat",    
                     data: obj,
     
                     //que quieres mostrar como recargable al iniciar
@@ -167,7 +182,7 @@ function btn_buscar()
                     //al finalizar
                     success: function(data)
                     {
-                        $("#panel_listado").html(data);
+                        $("#tablamaterial").html(data);
                        
                     }
                 });

@@ -47,10 +47,11 @@ class StockMatDeportivo_model extends CI_Model
 	public function buscar($palabra_buscar)
 	{
 		$this->db->select('*'); //select*
-		$this->db->from('asociacion'); //tabla
+		$this->db->from('stockMatDeportivo'); //tabla
 		$this->db->where('estado', '1');
-		$this->db->like('nombre', $palabra_buscar);
-		$this->db->or_like('idAsociacion', $palabra_buscar);
+		$this->db->like('tipomat', $palabra_buscar);
+		$this->db->or_like('idStockMatDeportivo', $palabra_buscar);
+		$this->db->or_like('talla', $palabra_buscar);
 		
 		return $this->db->get();	//devolucion del resultado de la consulta
 	}

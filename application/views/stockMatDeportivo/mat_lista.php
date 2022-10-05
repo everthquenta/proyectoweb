@@ -4,8 +4,13 @@
 
     </div>
     <input type="text" class="form-control border border-dark " name="" id="dato_buscado" aria-describedby="emailHelp" onkeyup="btn_buscar();" style="width:60%;display:inline;margin-top:.1em; margin-bottom:15px;">
+    <?php if($this->session->userdata('tipo')=='admin'){?>
+
     <button type="button" class="btn border border-primary " data-toggle="modal" > Buscar</button>
+
     <button type="button" class="btn border border-dark" data-toggle="modal" data-target="#myModal_registrar_mat" onclick="btn_mod_ingresar_mat()">Registrar</button>
+    <?php }?>
+
     <!-- <button type="button" class="btn btn-primary " onclick="btn_listar_datos();"> Listar</button> -->
 
     <!-- <button type="button" class="btn border border-dark" data-bs-toggle="modal" data-target="#myModal_registrars" onclick="btn_modal_para_ingresar()" style="display:inline;">Agregar</button> -->
@@ -24,7 +29,11 @@
                   <th>FECHA DE INGRESO</th>  
                   <th>IMAGEN</th>
                   <th>AÑADIR</th>
+                    <?php if($this->session->userdata('tipo')=='admin'){?>
+
                   <th>MODIFICAR</th>
+                <?php }?>
+
                   <th>ELIMINAR</th>
                   
                 </tr>
@@ -52,6 +61,7 @@
                          <td><?php echo $row->fechaRegistro;
                          ?> </td>
                         <td scope="col">
+                        
                         <img src="<?php echo base_url();?>./img/medalla1.jpg" style="width:60px; heigth: 60px;">
 
                         </td>
@@ -63,18 +73,22 @@
                             <td scope="col">
 
 
-                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal_info" onclick="btn_info('<?php echo $idStockMatDeportivo; ?>');">VER INFORMACION</button>
+                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal_info" onclick="btn_info('<?php echo $idStockMatDeportivo; ?>');">VER ACEPTAR</button>
 
                             </td>
+                        <?php if($this->session->userdata('tipo')=='admin'){?>
+
                         <td scope="col">
 
 
                             <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal_editar" onclick="btn_editar('<?php echo $idStockMatDeportivo; ?>');">MODIFICAR</button>
 
                         </td>
+                        <?php }?>
+
                         <td scope="col">
 
-                            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal_eliminar" onclick="btn_eliminar('<?php echo $idStockMatDeportivo; ?>');">ELIMINAR</button>
+                            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal_eliminar" onclick="btn_eliminar('<?php echo $idStockMatDeportivo; ?>');">RECHAZAR</button>
 
                             <!-- <button type="button" class="btn btn-outline-danger" onclick="btn_eliminar('<?php //echo $idConductor; 
                                                                                                                 ?>');"> -->

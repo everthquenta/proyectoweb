@@ -182,9 +182,11 @@ function btn_buscar_s()
 {
 
     var palabra = $(".mibuscador_s").val();
-    var tabla_s=document.getElementById("panel_mostrar_asoc")
-    tabla_s.style.display="block";
-    console.log(palabra);
+    var tabla_solic=document.getElementById("panel_mostrar_asoc")
+    
+        tabla_solic.style.display="block";
+    
+    
     var obj= {palabra:palabra};
         $.ajax({
                     //el protocolo
@@ -207,20 +209,23 @@ function btn_buscar_s()
                 });
 }
 
-function btn_seleccionar_s(idSolicitud_s,nombre_s,hojaRuta_s, campeonato_s,referencia_s)
+function btn_seleccionar_solic(idSolicitud,hojaRuta,remitente,campeonato,referencia)
 {
-   
-    var idAsoc = document.getElementById("idAsociacion_s");
-    console.log(idAsoc);
-    var nombre_asoc =document.querySelector(".mibuscador_s");
-    nombre_asoc.value=nombre_s;
-    console.log(nombre_asoc);
-    var campeonato_sol =document.querySelector("#campeonato");
-    console.log(nombre_asoc);
+    var Hoja_de_ruta =document.querySelector(".mibuscador_s");
+    Hoja_de_ruta.value=hojaRuta;
+    console.log(hojaRuta);
+    var remitente_a =document.getElementById("remitente");
+    remitente_a.value=remitente;
+    var campeonato_a =document.getElementById("referencia");
+    campeonato_a.value=referencia;
+    var solicita_a =document.getElementById("campeonato");
+    solicita_a.value=campeonato;
+
+
     
-    var tabla_s=document.getElementById(".mibuscador");
-    tabla_s.style.display="none";
-    console.log(tabla_s)
+    var tabla_solic=document.getElementById("tablabusqueda");
+    tabla_solic.style.display="none";
+    console.log(tabla_solic);
 }
 //modal para registrar
 

@@ -1,7 +1,7 @@
 <div class="page-content bg-light">
     <div class="page-header bg-light">
-        <div class="container-fluid">
-            <h2 class="h5 no-margin-bottom">ENTREGA DE MATERIAL</h2>
+        <div class="container-fluid" aling="center">
+            <h1  class="h5 no-margin-bottom">ENTREGA DE MATERIAL</h1>
         </div>
     </div>
     <section>
@@ -10,10 +10,11 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label for="buscar_solicitud">HOJA DE RUTA</label>
+                        <br>
                         <input type="hidden" id="idSolicitud" name="idSolicitud">
                         <input type="text" class="mibuscador_s form-control border border-dark " name="" id="dato_buscado" aria-describedby="emailHelp" onkeyup="btn_buscar_s();" style="width:60%;display:inline;margin-top:.1em; margin-bottom:15px;" >
                         <div class="row">
-                                <div class="col-lg-12" width="100"; height="100";>
+                                <div class="col-lg-9" width="100"; height="100";>
                                     <div class="table - responsive">
                                         <table class="table table-light mt-2" id="tablabusqueda">
                                             <thead class="thead-white">
@@ -33,28 +34,29 @@
                                     </div>
                                 </div>
                             </div>
+
                         
                         <span class="text-danger d-none" id="error">No hay producto</span>
                     </div>
                     <div class="col-lg-4">
                     <div class="form-group">
-                        <label for="campeonato">Remitente</label>
-                        <input id="campeonato" class="form-control" type="text" name="campeonato"  readonly>
+                        <label for="ref">SOLICITADO POR</label>
+                        <input id="remitente" class="form-control" type="text" name="referencia"  readonly>
                         <br />
                         <strong id="nombreP"></strong>
                     </div>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-12">
                     <div class="form-group">
-                        <label for="cantidad">Cantidad</label>
-                        <input id="stockD" type="hidden">
-                        <input id="cantidad" class="form-control" type="text" name="cantidad" onkeyup="IngresarCantidad(event);">
+                        <label for="cantidad">SOLICITA</label>
+                        <br>
+                        <input id="referencia" type="text">
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-12">
                     <div class="form-group">
-                        <label for="precio">Precio</label>
-                        <input id="precio" class="form-control" type="hidden" name="precio">
+                        <label for="precio">PARA EL</label>
+                        <input id="campeonato" class="form-control" type="text" name="referencia" >
                         <br />
                         <strong id="precioP"></strong>
                     </div>
@@ -64,12 +66,13 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label for="buscar_solicitud">MATERIAL DEPORTIVO</label>
+                        <br>
                         <input type="hidden" id="idSolicitud" name="idSolicitud">
-                        <input type="text" class="mibuscador_s form-control border border-dark " name="" id="dato_buscado" aria-describedby="emailHelp" onkeyup="btn_buscar_s();" style="width:60%;display:inline;margin-top:.1em; margin-bottom:15px;" >
+                        <input type="text" class="mibuscador_mat form-control border border-dark " name="" id="dato_buscado" aria-describedby="emailHelp" onkeyup="btn_buscar_mat();" style="width:60%;display:inline;margin-top:.1em; margin-bottom:15px;" >
                         <div class="row">
                                 <div class="col-lg-12" width="100"; height="100";>
                                     <div class="table - responsive">
-                                        <table class="table table-light mt-2" id="tablabusqueda" >
+                                        <table class="table table-light mt-2" id="tablamaterial" >
                                             <thead class="thead-white">
                                                 <tr>
                                                     <th></th>
@@ -92,29 +95,32 @@
                     </div>
                     <div class="col-lg-4">
                     <div class="form-group">
-                        <label for="campeonato">Remitente</label>
-                        <input id="campeonato" class="form-control" type="text" name="campeonato" value="hola" readonly>
+                        <label for="campeonato">DETALLE DEL MATERIAL</label>
+                        <input id="talla" class="form-control" type="text" name="campeonato" readonly>
                         <br />
                         <strong id="nombreP"></strong>
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <div class="form-group">
-                        <label for="cantidad">Cantidad</label>
-                        <input id="stockD" type="hidden">
-                        <input id="cantidad" class="form-control" type="text" name="cantidad" onkeyup="IngresarCantidad(event);">
+                        <label for="cantidad">CANTIDAD A ENTREGAR</label>
+                        <input id="stock" type="hidden">
+                        <input id="stockmat" class="form-control" type="text" name="cantidad" onkeyup="IngresarCantidad(event);">
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="form-group">
-                        <label for="precio">Precio</label>
-                        <input id="precio" class="form-control" type="hidden" name="precio">
+                        <label for="precio">CANTIDAD TOTAL DEL MATERIAL EN STOCK</label>
+                        <input id="cantstock" class="form-control" type="text" name="precio" readonly>
                         <br />
                         <strong id="precioP"></strong>
                     </div>
                 </div>
                 </div>
-               
+                <script src="<?php echo base_url(); ?>scripts/c_stockMatDeportivo.js"></script>
+                
+                <button type="button" class="btn btn-outline-primary"   onclick="">AÑADIR MATERIAL DEPORTIVO</button>
+
             </form>
             <div class="row">
                 <div class="col-lg-12">
@@ -150,11 +156,11 @@
                 </div>
                 <div class="col-lg-4 mt-1">
                     <div class="form-group">
-                        <strong class="text-primary">Total a pagar</strong>
+                        <strong class="text-primary">Total a Entregar</strong>
                         <input type="hidden" id="total" name="total" class="form-control  mb-2">
                         <strong id="tVenta" class="form-control border-0 text-success"></strong>
-                        <button class="btn btn-danger" type="button" id="AnularCompra">Anular Venta</button>
-                        <button class="btn btn-success" type="button" id="procesarVenta"><i class="fas fa-money-check-alt"></i> Procesar Venta</button>
+                        <button class="btn btn-danger" type="button" id="AnularCompra">Anular Entrega</button>
+                        <button class="btn btn-success" type="button" id="procesarVenta"><i class="fas fa-money-check-alt"></i> Procesar Entrega</button>
                     </div>
                 </div>
             </div>
