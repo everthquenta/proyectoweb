@@ -62,7 +62,7 @@
                         <td scope="col">
 
 
-                            <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal_editar" onclick="btn_editar('<?php echo $idSolicitud; ?>');">MODIFICAR</button>
+                            <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal_editar_soli" onclick="btn_editar_soli('<?php echo $idSolicitud; ?>');">MODIFICAR</button>
 
                         </td>
                         <td scope="col">
@@ -157,7 +157,7 @@
 
 <!-- Modal -->
 
-<div class="modal fade" id="myModal_editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal_editar_soli" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header " style=" background:#061B3D">
@@ -167,7 +167,7 @@
                     </button>
             </div>
             <div class="modal-body">
-                <div id="panel_editar"></div>
+                <div id="panel_editar_soli"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -202,7 +202,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary" id="guardar" onclick="btn_guardar_datos_solic();" data-dismiss="modal">Guardar</button>
+                    <button type="submit" class="btn btn-primary" id="guardar" onclick="btn_guardar_datos_solic()" data-dismiss="modal">Guardar</button>
                 </div>
             </div>
         </div>

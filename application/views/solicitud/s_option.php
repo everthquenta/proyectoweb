@@ -79,8 +79,8 @@ if ($opcion == "listar") { ?>
 
 
 
-if ($opcion == "editar") {
-  foreach ($asociacioness->result() as $row) {
+if ($opcion == "editar_soli") {
+  foreach ($solicitudes->result() as $row) {
   ?>
 
     <div class="container">
@@ -88,32 +88,29 @@ if ($opcion == "editar") {
 
       <!-- <div class="col-md-4 col-xs-12"> -->
       <div class="row">
-        <input type="hidden" class="form-control" id="idAsociacion_edi" aria-describedby="emailHelp" value="<?php echo $row->idAsociacion ?>">
+        <input type="hidden" class="form-control" id="idSolicitud_edi" aria-describedby="emailHelp" value="<?php echo $row->idSolicitud; ?>">
         <div class="col-12">
           <label for="exampleInputEmail1" class="form-label">ASOCIACION DEPORTIVA</label>
-          <input type="text" class="form-control" required name="nombre" id="nombre_edi" aria-describedby="emailHelp" value="<?php echo $row->nombre; ?>">
+          <input type="text" class="form-control" required name="nombre" id="nombre_edi" aria-describedby="emailHelp" value="<?php echo $row->idAsociacion;  ?>" readonly>
         </div>
 
         <div class="col-lg-6">
-          <label for="exampleInputEmail1" class="form-label">DIRECCION</label>
-          <input type="text" class="form-control" required name="direccion" id="direccion_edi" aria-describedby="emailHelp" value="<?php echo $row->direccion; ?>">
+          <label for="exampleInputEmail1" class="form-label">HOJA DE RUTA</label>
+          <input type="text" class="form-control" required name="direccion" id="direccion_edi" aria-describedby="emailHelp" value="<?php echo $row->hojaRuta; ?>">
         </div>
         <div class="col-6">
-          <label for="exampleInputEmail1" class="form-label">TELEFONO</label>
-          <input type="text" class="form-control" name="telefono" id="telefono_edi" aria-describedby="emailHelp" value="<?php echo $row->telefono; ?>">
+          <label for="exampleInputEmail1" class="form-label">REMITENTE</label>
+          <input type="text" class="form-control" name="remitente" id="remitente_edi" aria-describedby="emailHelp" value="<?php echo $row->remitente; ?>">
         </div>
         <div class="col-lg-6">
-          <label for="exampleInputEmail1" class="form-label">CORREO</label>
-          <input type="text" class="form-control" required name="correo" id="correo_edi" aria-describedby="emailHelp" value="<?php echo $row->correo; ?>">
+          <label for="exampleInputEmail1" class="form-label">CAMPEONATO</label>
+          <input type="text" class="form-control" required name="campeonato" id="campeonato_edi" aria-describedby="emailHelp" value="<?php echo $row->campeonato; ?>">
         </div>
         <div class="col-lg-6">
-          <label for="exampleInputEmail1" class="form-label">FECHA DE PERSONARIA FURIDICA</label>
-          <input type="date" class="form-control" required name="fechaPersJuridica" id="fechaPersJuridica_edi" aria-describedby="emailHelp" value="<?php echo $row->fechaPersJuridica; ?>">
+          <label for="exampleInputEmail1" class="form-label">SOLICITUD</label>
+          <input type="date" class="form-control" required name="referencia" id="referencia_edi" aria-describedby="emailHelp" value="<?php echo $row->referencia; ?>">
         </div>
-        <div class="col-lg-6">
-          <label for="exampleInputEmail1" class="form-label">LOGO</label>
-          <input type="file" class="form-control" required name="logo" id="logo_edi" aria-describedby="emailHelp" >
-        </div>
+       
 
        
       </div>

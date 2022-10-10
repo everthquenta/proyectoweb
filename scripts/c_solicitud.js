@@ -27,6 +27,7 @@ function btn_guardar_datos_solic()
                 //al finalizar
                 success: function(data)
                 {
+                    console.log(data);
                     $("#panel_respuesta").html(data);
                     btn_listar_datos();
 
@@ -211,14 +212,12 @@ function btn_seleccionar(idAsociacion_s,nombre_s)
 {
    
     var idAsoc = document.getElementById("idAsociacion_s");
-    console.log(idAsoc);
     var nombre_asoc =document.querySelector(".mibuscador_s");
     nombre_asoc.value=nombre_s;
    
     idAsoc.value=idAsociacion_s;
     var tabla_s=document.getElementById("panel_mostrar_asoc");
     tabla_s.style.display="none";
-    console.log(tabla_s)
 }
 //modal para registrar
 
@@ -272,16 +271,17 @@ function btn_registrar_solicitud()
 //                 });
 // }
 
-function btn_editar(idAsociacion){
+function btn_editar_soli(idSolicitud){
     // console.log(id_medicamento);
+    
 
-    var ob= {idAsociacion:idAsociacion};
+    var ob= {idSolicitud:idSolicitud};
     console.log(ob);
         $.ajax({
                     //el protocolo
                     type: "POST",
                     //a donde quiero mandar el objeto
-                    url: "http://localhost/didede/index.php/Asociacion/editar_datos",    
+                    url: "http://localhost/didede/index.php/Solicitud/editar_datos_soli",    
                     data: ob,
     
                     //que quieres mostrar como recargable al iniciar
@@ -289,7 +289,7 @@ function btn_editar(idAsociacion){
                     //al finalizar
                     success: function(data)
                     {
-                        $("#panel_editar").html(data);
+                        $("#panel_editar_soli").html(data);
                        
                     }
                 });

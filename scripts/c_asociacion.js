@@ -197,11 +197,6 @@ function btn_modal_para_ingresar(){
                     {
                         
                         $("#panel_registrar").html(data);
-                                                    
-                            
-                            
-                            
-                        
                        
                     }
                 });

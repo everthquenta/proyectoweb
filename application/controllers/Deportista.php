@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Solicitud extends CI_Controller
+class Deportista extends CI_Controller
 {
 
 	public function __construct()
@@ -12,44 +12,52 @@ class Solicitud extends CI_Controller
 	public function index()
 	{
 
-		$lista = $this->solicitud_model->l_solicitud();
-		$data['solicitud'] = $lista;
+		$lista = $this->deportista_model->l_deportista();
+		$data['deportista'] = $lista;
 
 
 		$this->load->view('inc/headerlte');
-		$this->load->view('solicitud/s_lista', $data);
+		$this->load->view('deportista/d_lista', $data);
 		$this->load->view('inc/footerlte');
 	}
 
+
 	
 
-	public function listar_datos()
+
+	
+
+	public function listar_datos_deportista()
 	{
 
 		//lo cargamos a un array relacional
 		$data["opcion"] = "listar";
-		$data["solicitud"] = $this->solicitud_model->l_solicitud();
+		$data["deportistas"] = $this->deportista_model->l_deportista();
 		
 			 
 			// "medicamentos" => $this->Mmedicamento->listar_medicamentos(
 
-		$this->load->view('solicitud/s_option', $data);
+		$this->load->view('deportista/d_option', $data);
 	}
 
 
-	public function agregar_bd_solic()
-	{
+	public function agregar_bd_deportista()
+	{	
+		
 		$data['idAsociacion'] = $_POST['idAsociacion'];
-		$data['hojaRuta'] = $_POST['hojaRuta'];
-		$data['remitente'] = $_POST['remitente'];
-		$data['campeonato'] = $_POST['campeonato'];
-		$data['referencia'] = $_POST['referencia'];
+		$data['nombre'] = $_POST['nombre'];
+		$data['primerApellido'] = $_POST['primerApellido'];
+		$data['segundoApellido'] = $_POST['segundoApellido'];
+		$data['fechaNacimiento'] = $_POST['fechaNacimiento'];
+		$data['cedula'] = $_POST['cedula'];
+		$data['fichaMedica'] = $_POST['fichaMedica'];
+		
+		$data['perfil'] = $_POST['perfil'];
 
 		
 		// echo $fechaCreacion;
-
+		$lista = $this->deportista_model->agregardeportista($data);
 		// $lista = $this->Mmedicamento->agregar_medicamento($data);
-		$lista = $this->solicitud_model->add_solicitud($data);
 		
 	}
 
@@ -65,13 +73,14 @@ class Solicitud extends CI_Controller
 
 
 	//Recibimos el id para recuperar la informacion de la bd
-	public function editar_datos_soli()
+	public function editar_datos_deportista()
 	{
-		$idSolicitud = $_POST['idSolicitud'];
-		$data["opcion"] = "editar_soli";
-		$data["solicitudes"]= $this->solicitud_model->recuperarsolicitud($idSolicitud);
+		$idDeportista = $_POST['idDeportista'];
+		$data["opcion"] = "editar_deportista";
+	
+		$data["deportistaedi"]= $this->deportista_model->recuperardeportista($idDeportista,$data);
+		$this->load->view('deportista/d_option', $data);
 		
-		$this->load->view('solicitud/s_option', $data);
 	}
 	public function info_datos()
 	{
@@ -91,60 +100,83 @@ class Solicitud extends CI_Controller
 		$this->load->view('asociacion/option', $data);
 	}
 
-	public function guardar_datos()
+	public function guardar_datos_deportista()
 	{
 
 		$idAsociacion = $_POST['idAsociacion'];
+		$idDeportista= $_POST['idDeportista'];
 		$data['nombre'] = $_POST['nombre'];
-		$data['direccion'] = $_POST['direccion'];
-		$data['telefono'] = $_POST['telefono'];
-		$data['correo'] = $_POST['correo'];
-        $data['fechaPersJuridica'] = $_POST['fechaPersJuridica'];
+		$data['primerApellido'] = $_POST['primerApellido'];
+		$data['segundoApellido'] = $_POST['segundoApellido'];
+		$data['fechaNacimiento'] = $_POST['fechaNacimiento'];
+		$data['cedula'] = $_POST['cedula'];
+		$data['fichaMedica'] = $_POST['fichaMedica'];
+		$data['perfil'] = $_FILES['perfil'];
 
-		$nombrearchivo=$idAsociacion.".jpg";
-		$config['upload_path']='./uploads/';
+		$nombrearchivo=$idDeportista.".jpg";
+		$config['upload_path']='./uploads/deportistas';
 		$config['file_name']=$nombrearchivo;
-		$direccion = "./uploads/".$nombrearchivo;
+		$direccion ="./uploads/deportistas/".$nombrearchivo;
 		$linkimg="user.jpg";
 		
+		if(file_exists($direccion))
+			{
+				unlink($direccion);
+			}
 			
-			unlink($direccion);
 		
 		$config['allowed_types']='jpg';
 		$this->load->library('upload',$config);
 
 		if(!$this->upload->do_upload())
 		{
-			$data['logo']=$linkimg6;
-			echo 'ingrese una  de extención jpg';
+			//$data['logo']=$linkimg;
+			$data['perfil']=$this->upload->display_errors();
+			//echo 'ingrese una  de extención jpg';
 		}
 		else
 		{
-			$data['logo']=$nombrearchivo;
+			$data['perfil']=$nombrearchivo;
 			
 		}
 
-		$this->asociacion_model->modificarasociacion($idAsociacion, $data);
+		$this->deportista_model->modificardeportista($idDeportista, $data);
 		$this->upload->data();
+
 	}
 
 	public function buscar_en_bd()
 	{
+	
+		// aca empieza
+
+		$palabra_buscar = $_POST['palabra'];
+
+		$data ["opcion"]="buscador";
+		$data ["asociaciondep"]=$this->asociacion_model->buscar($palabra_buscar);
+
+		$this->load->view('asociacion/option', $data);
+	}
+	public function buscar_en_bds()
+	{
+	
+		// aca empieza
+
 		$palabra_buscar = $_POST['palabra'];
 
 		$data ["opcion"]="buscador_s";
-		$data ["asociaciondep"]= $this->asociacion_model->buscar($palabra_buscar);
+		$data ["asociaciondeportiva"]= $this->asociacion_model->buscar($palabra_buscar);
 
-		$this->load->view('solicitud/option', $data);
+		$this->load->view('asociacion/option', $data);
 	}
 
 	//cargar el formulario al modal
 
-	public function subir_modal_solic()
+	public function subir_modal_deportista()
 	{
 
-		$data["opcion"] ="s_formulario"; 
-		$this->load->view('solicitud/s_option', $data);
+		$data["opcion"] ="formulario_d"; 
+		$this->load->view('deportista/d_option', $data);
 	}
 
 	public function cerrar_session()
@@ -186,15 +218,5 @@ class Solicitud extends CI_Controller
 		$this->load->view('inc/headerlte');
 		$this->load->view('asociacion/sinpersoneria', $data);
 		$this->load->view('inc/footerlte');
-	}
-	public function buscar_en_bds()
-	{
-		// aca empieza
-		$palabra_buscar = $_POST['palabra'];
-
-		$data ["opcion"]="buscador_s";
-		$data ["solicitudhoja"]= $this->solicitud_model->buscar($palabra_buscar);
-
-		$this->load->view('solicitud/s_option', $data);
 	}
 }

@@ -19,7 +19,7 @@ class Solicitud_model extends CI_Model
 
 	public function add_solicitud($data)
 	{
-		$this->db->insert('solicitud', $data);
+		$this->db->insert('solicitud',$data);
 	}
 
 	public function eliminarasociacion($idAsociacion,$data)
@@ -28,11 +28,11 @@ class Solicitud_model extends CI_Model
 		$this->db->update('asociacion',$data);
 	}
 
-	public function recuperarasociacion($idAsociacion)
+	public function recuperarsolicitud($idSolicitud)
 	{
 		$this->db->select('*'); //select*
-		$this->db->from('asociacion'); //tabla
-		$this->db->where('idAsociacion', $idAsociacion);
+		$this->db->from('solicitud'); //tabla
+		$this->db->where('idSolicitud', $idSolicitud);
 		return $this->db->get();	//devolucion del resultado de la consulta
 	}
 

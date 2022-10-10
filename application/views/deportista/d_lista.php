@@ -1,11 +1,11 @@
 <div class="col py-3">
     <div class="" style="width:100% ;">
-        <p>System / Asociaciones</p>
+        <p>System / Deportistas</p>
 
     </div>
     <input type="text" class="form-control border border-dark " name="" id="dato_buscado" aria-describedby="emailHelp" onkeyup="btn_buscar();" style="width:60%;display:inline;margin-top:.1em; margin-bottom:15px;">
     <button type="button" class="btn border border-primary " data-toggle="modal" > Buscar</button>
-    <button type="button" class="btn border border-dark" data-toggle="modal" data-target="#myModal_registrar" onclick="btn_modal_para_ingresar()">Registrar</button>
+    <button type="button" class="btn border border-dark" data-toggle="modal" data-target="#myModal_registrar_deportista" onclick="btn_registrar_deportista();">Registrar</button>
     <!-- <button type="button" class="btn btn-primary " onclick="btn_listar_datos();"> Listar</button> -->
 
     <!-- <button type="button" class="btn border border-dark" data-bs-toggle="modal" data-target="#myModal_registrars" onclick="btn_modal_para_ingresar()" style="display:inline;">Agregar</button> -->
@@ -18,12 +18,14 @@
             <thead class="text-white " style="border-bottom:none; background:#197E6A;">
                 <tr>
                 <th>#</th> 
-                  <th>LOGO</th> 
+                  <th>PERFIL</th>
+                  <th>NOMBRE</th> 
                   <th>ASOCIACION DEPORTIVA</th>
                   <th>INFORMACION</th>  
                   <?php if($this->session->userdata('tipo')=='admin'){?>
                   <th>EDITAR</th>  
                   <th>ELIMINAR</th>
+
                   <?php }?>
                   
                 </tr>
@@ -32,48 +34,53 @@
 
                 <?php
                 $indice = 0;
-                foreach ($asociacion->result() as $row) {
-                    $idAsociacion = $row->idAsociacion;
+                foreach ($deportista->result() as $row) {
+                    $idDeportista = $row->idDeportista;
                 ?>
-                    <tr>
+                <tr>
                     <th scope="row"><?php $indice++;
                                         echo $indice;
-                                        ?></th>
-                    <th scope="row">
-                         <?php
-                      $logo=$row->logo;
-                      if($logo==""){
-                      ?>
-                     <img src="<?php echo base_url();?>/uploads/user.jpeg" style="width:60px; heigth: 60px;">
-                     <?php
-                      }else
-                     {
-                     ?>
-                     <img src="<?php echo base_url();?>uploads/<?php echo $logo;?>" style="width:60px; heigth: 60px;">
-                     <?php
-
-                     }
-                     ?>
-                     </th>
+                    ?></th>
+                    <td>
+                        <?php 
+                        $perfil=$row->perfil;
+                        if($perfil=="")
+                        {
+                            //mostrar una imagen por defecto
+                        ?>
+                        <img src="<?php echo base_url(); ?>/uploads/deportistas/perfil.jpg" width="50" alt="">
+                        <?php
+                        }else
+                        {
+                        ?>
+                        <img src="<?php echo base_url(); ?>uploads/deportistas/<?php echo $perfil;?>" width="55" alt="">
+                        <?php
+                        }
+                        ?> 
+                    </td>
+                    
                      </td>
                         <td><?php echo $row->nombre;
-                            ?> </td>
+                         ?> </td>
+                         <td><?php echo $row->primerApellido;
+                         ?> </td>
+                        <td><?php echo $row->segundoApellido;
+                         ?> </td>
+                        <td scope="col">
 
-                            <td scope="col">
 
-
-                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal_info" onclick="btn_info('<?php echo $idAsociacion; ?>');">VER INFORMACION</button>
+                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal_info" onclick="btn_info('<?php echo $idDeportista; ?>');">VER INFORMACION</button>
 
                             </td>
                         <td scope="col">
 
                         <?php if($this->session->userdata('tipo')=='admin'){?>
-                            <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal_editar" onclick="btn_editar('<?php echo $idAsociacion; ?>');">MODIFICAR</button>
+                            <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal_editar_deportista" onclick="btn_editar_deportista('<?php echo $idDeportista; ?>');">MODIFICAR</button>
 
                         </td>
                         <td scope="col">
 
-                            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal_eliminar" onclick="btn_eliminar('<?php echo $idAsociacion; ?>');">ELIMINAR</button>
+                            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal_eliminar" onclick="btn_eliminar('<?php echo $idDeportista; ?>');">ELIMINAR</button>
 
                             <!-- <button type="button" class="btn btn-outline-danger" onclick="btn_eliminar('<?php //echo $idConductor; 
                                                                                                                 ?>');"> -->
@@ -165,21 +172,22 @@
 
 <!-- Modal -->
 
-<div class="modal fade" id="myModal_editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal_editar_deportista" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header " style=" background:#061B3D">
-                <h5 class="modal-title text-white">MODIFICAR ASOCIACION DEPORTIVA</h4>
+                <h5 class="modal-title text-white">MODIFICAR DATOS DE DEPORTISTA</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
             </div>
             <div class="modal-body">
                 <div id="panel_editar"></div>
+                <div id="panel_respuesta_ediDeportista"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" onclick="btn_guardar_edicion()" data-dismiss="modal">Editar</button>
+                <button type="button" class="btn btn-primary" onclick="btn_guardar_edicion_deportista()" data-dismiss="modal">Editar</button>
             </div>
         </div>
     </div>
@@ -189,24 +197,26 @@
 
 <!-- Modal -->
 
-<div class="modal fade" id="myModal_registrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal_registrar_deportista" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
     <form>
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header " style=" background:#061B3D">
-                    <h5 class="modal-title text-white">Registrar Asociacion Deportiva</h4>
+                    <h5 class="modal-title text-white">Registrar DEPORTISTA</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                 </div>
                 <div class="modal-body">
-                    <div id="panel_registrar"></div>
+                    <div id="panel_registrar_d"></div>
                     <div id="panel_respuesta_registrar"></div>
+                    <div class="col-lg-12" id="panel_mostrar_asoc"></div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary" id="guardar" onclick="btn_guardar_datos();" data-dismiss="modal">Guardar</button>
+                    <button type="submit" class="btn btn-primary" id="guardar" onclick="btn_guardar_datos_deportista();" data-dismiss="modal">Guardar</button>
                 </div>
             </div>
         </div>
@@ -259,7 +269,6 @@
     </div>
 
 </div>
-<script src="<?php echo base_url(); ?>scripts/c_asociacion.js"></script>
-
+<script src="<?php echo base_url(); ?>scripts/c_deportista.js"></script>
 
 

@@ -4,27 +4,25 @@
 
     </div>
     <input type="text" class="form-control border border-dark " name="" id="dato_buscado" aria-describedby="emailHelp" onkeyup="btn_buscar();" style="width:60%;display:inline;margin-top:.1em; margin-bottom:15px;">
-    <button type="button" class="btn border border-primary " data-toggle="modal" > Buscar</button>
+    <button type="button" class="btn border border-dark " data-toggle="modal" onclick="btn_buscar();"> Buscar</button>
     <button type="button" class="btn border border-dark" data-toggle="modal" data-target="#myModal_registrar" onclick="btn_modal_para_ingresar()">Registrar</button>
     <!-- <button type="button" class="btn btn-primary " onclick="btn_listar_datos();"> Listar</button> -->
 
     <!-- <button type="button" class="btn border border-dark" data-bs-toggle="modal" data-target="#myModal_registrars" onclick="btn_modal_para_ingresar()" style="display:inline;">Agregar</button> -->
 
 
-    <!-- Tabla de ASOCIACIONES -->
+    <!-- Tabla de medicamentos -->
     <!-- Start panael listado -->
     <div id="panel_listado">
-        <table class="table table-bordered" style="border-color:#061B3D !important" id="listasociaciones">
-            <thead class="text-white " style="border-bottom:none; background:#197E6A;">
+        <table class="table table-bordered" style="border-color:#DDF9F9 !important">
+            <thead class="text-white " style="border-bottom:none; background:#061B3D;">
                 <tr>
-                <th>#</th> 
-                  <th>LOGO</th> 
-                  <th>ASOCIACION DEPORTIVA</th>
+                <th>#</th>
+                  <th>Logo</th> 
+                  <th>Asociación</th>
                   <th>INFORMACION</th>  
-                  <?php if($this->session->userdata('tipo')=='admin'){?>
                   <th>EDITAR</th>  
                   <th>ELIMINAR</th>
-                  <?php }?>
                   
                 </tr>
             </thead>
@@ -49,7 +47,7 @@
                       }else
                      {
                      ?>
-                     <img src="<?php echo base_url();?>uploads/<?php echo $logo;?>" style="width:60px; heigth: 60px;">
+                     <img src="<?php echo base_url();?>./uploads/<?php echo $logo;?>" style="width:80px; heigth: 80px;">
                      <?php
 
                      }
@@ -67,19 +65,18 @@
                             </td>
                         <td scope="col">
 
-                        <?php if($this->session->userdata('tipo')=='admin'){?>
+
                             <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal_editar" onclick="btn_editar('<?php echo $idAsociacion; ?>');">MODIFICAR</button>
 
                         </td>
                         <td scope="col">
 
-                            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal_eliminar" onclick="btn_eliminar('<?php echo $idAsociacion; ?>');">ELIMINAR</button>
+                            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#myModal_eliminar" onclick="btn_habilitar('<?php echo $idAsociacion; ?>');">HABILITAR</button>
 
                             <!-- <button type="button" class="btn btn-outline-danger" onclick="btn_eliminar('<?php //echo $idConductor; 
                                                                                                                 ?>');"> -->
                             <!-- </button> -->
                         </td>
-                        <?php }?>
 
 
                     </tr>
@@ -91,7 +88,6 @@
 
 
             </tbody>
-            <link rel="stylessheet" href="styles.css">
         </table>
         <!-- <div id="pagination"><? // $this->pagination->create_links(); 
                                     ?></div> -->
@@ -260,6 +256,3 @@
 
 </div>
 <script src="<?php echo base_url(); ?>scripts/c_asociacion.js"></script>
-
-
-
