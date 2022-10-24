@@ -226,7 +226,9 @@ if ($opcion == "buscador_mat") {
                   <th>DETALLE</th>
                   <th>STOCK</th>  
                   <th>FECHA DE INGRESO</th>  
-                  <th>IMAGEN</th>
+                  <th>CAT. PROGRAMATICA</th>
+                  <th>PARTIDA</th>
+                  <th>IMG</th>
                  
                   
                 </tr>
@@ -253,10 +255,26 @@ if ($opcion == "buscador_mat") {
                          ?> </td>
                          <td><?php echo $row->fechaRegistro;
                          ?> </td>
-                        <td scope="col">
-                        <img src="<?php echo base_url();?>./img/medalla1.jpg" style="width:60px; heigth: 60px;">
+                          <td><?php echo $row->categoriaProgramatica;
+                         ?> </td>
+                          <td><?php echo $row->partida;
+                         ?> </td>
+                        <th scope="row">
+                         <?php
+                      $imgmat=$row->imgmat;
+                      if($imgmat==""){
+                      ?>
+                     <img src="<?php echo base_url();?>/uploads/user.jpg" style="width:60px; heigth: 60px;">
+                     <?php
+                      }else
+                     {
+                     ?>
+                     <img src="<?php echo base_url();?>uploads/<?php echo $imgmat;?>" style="width:60px; heigth: 60px;">
+                     <?php
 
-                        </td>
+                     }
+                     ?>
+                     </th>
 
 
 
@@ -265,7 +283,7 @@ if ($opcion == "buscador_mat") {
                             <td scope="col">
 
 
-                            <button type="button" class="btn btn-outline-primary"  onclick="btn_seleccionar_mat('<?php echo $idStockMatDeportivo; ?>','<?php echo $row->tipomat; ?>','<?php echo $row->talla; ?>','<?php echo $row->stock; ?>');">+</button>
+                            <button type="button" class="btn btn-outline-primary"  onclick="btn_seleccionar_mat('<?php echo $idStockMatDeportivo; ?>','<?php echo $row->tipomat; ?>','<?php echo $row->talla; ?>','<?php echo $row->stock; ?>','<?php echo $row->categoriaProgramatica; ?>','<?php echo $row->partida; ?>');">+</button>
 
                             </td>
                        

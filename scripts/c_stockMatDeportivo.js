@@ -144,7 +144,7 @@ function btn_guardar_edicion()
                     }
                 });
 }
-function btn_seleccionar_mat(idStockMatDeportivo,tipomat,talla,stock)
+function btn_seleccionar_mat(idStockMatDeportivo,tipomat,talla,stock, categoriaProgramatica,partida)
 {
    
     var materialdeportivo =document.querySelector(".mibuscador_mat");
@@ -154,18 +154,31 @@ function btn_seleccionar_mat(idStockMatDeportivo,tipomat,talla,stock)
     talla_a.value=talla;
     var stock_a =document.getElementById("stockmat");
     stock_a.value=stock;
+    var idStockMatDeportivo_a =document.getElementById("idStockMatDep");
+    idStockMatDeportivo_a.value=idStockMatDeportivo;
+
+    var catProg_a =document.getElementById("categoriaProgramatica");
+    catProg_a.value=categoriaProgramatica;
+
+    var partida_a =document.getElementById("partida");
+    partida_a.value=partida;
+
     var stock_disponible =document.getElementById("cantstock");
     stock_disponible.value=stock;
-    tabla_s.style.display="none";
-    console.log(tabla_s)
+    tablamaterial.style.display="none";
+    console.log(tablamaterial)
+    
 }
 
 
 function btn_buscar_mat()
 {
-
+    var tablamaterial=document.querySelector("#tablamaterial");
+    tablamaterial.style.display="block";
+    
     var palabra = $(".mibuscador_mat").val();
     console.log(palabra);
+    
     var obj= {palabra:palabra};
         $.ajax({
                     //el protocolo

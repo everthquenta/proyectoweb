@@ -17,10 +17,10 @@ class Deportista_model extends CI_Model
 		$this->db->insert('deportista', $data);
 	}
 
-	public function eliminarasociacion($idAsociacion,$data)
+	public function eliminardeportista($idDeportista,$data)
 	{
-		$this->db->where('idAsociacion', $idAsociacion);
-		$this->db->update('asociacion',$data);
+		$this->db->where('idDeportista', $idDeportista);
+		$this->db->update('deportista',$data);
 	}
 
 	public function recuperardeportista($idDeportista)
@@ -40,7 +40,7 @@ class Deportista_model extends CI_Model
 	public function sinpersoneria()
 	{
 		$this->db->select('*'); //select*
-		$this->db->from('asociacion'); //tabla
+		$this->db->from('deportista'); //tabla
 		$this->db->where('estado', '0');
 		return $this->db->get();	//devolucion del resultado de la consulta
 	}

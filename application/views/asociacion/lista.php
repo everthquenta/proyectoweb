@@ -44,7 +44,7 @@
                       $logo=$row->logo;
                       if($logo==""){
                       ?>
-                     <img src="<?php echo base_url();?>/uploads/user.jpeg" style="width:60px; heigth: 60px;">
+                     <img src="<?php echo base_url();?>/uploads/user.jpg" style="width:60px; heigth: 60px;">
                      <?php
                       }else
                      {

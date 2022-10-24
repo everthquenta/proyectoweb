@@ -91,8 +91,9 @@ if ($opcion == "editar_soli") {
         <input type="hidden" class="form-control" id="idSolicitud_edi" aria-describedby="emailHelp" value="<?php echo $row->idSolicitud; ?>">
         <div class="col-12">
           <label for="exampleInputEmail1" class="form-label">ASOCIACION DEPORTIVA</label>
-          <input type="text" class="form-control" required name="nombre" id="nombre_edi" aria-describedby="emailHelp" value="<?php echo $row->idAsociacion;  ?>" readonly>
+          <input type="text" class="form-control" required name="nombre" id="nombre_edi" aria-describedby="emailHelp" value="<?php echo $row->nombre;  ?>" readonly>
         </div>
+
 
         <div class="col-lg-6">
           <label for="exampleInputEmail1" class="form-label">HOJA DE RUTA</label>
@@ -108,7 +109,7 @@ if ($opcion == "editar_soli") {
         </div>
         <div class="col-lg-6">
           <label for="exampleInputEmail1" class="form-label">SOLICITUD</label>
-          <input type="date" class="form-control" required name="referencia" id="referencia_edi" aria-describedby="emailHelp" value="<?php echo $row->referencia; ?>">
+          <input type="text" class="form-control" required name="referencia" id="referencia_edi" aria-describedby="emailHelp" value="<?php echo $row->referencia; ?>">
         </div>
        
 

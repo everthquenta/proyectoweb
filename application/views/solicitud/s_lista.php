@@ -43,7 +43,7 @@
                         <td><?php echo $row->hojaRuta;
                             ?> </td>
                         
-                        <td><?php echo $row->nombre;
+                        <td id="nombreAsociacion_solicitud"><?php echo $row->nombre;
                             ?> </td>
 
                         <td><?php echo $row->remitente;
@@ -56,8 +56,11 @@
                             <td scope="col">
 
 
-                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal_info" onclick="btn_info('<?php echo $idSolicitud; ?>');">VER INFORMACION</button>
-
+                            <!--<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal_info" onclick="btn_info('<?php echo $idSolicitud; ?>');">VER INFORMACION</button>-->
+                            <a  href="<?php echo base_url(); ?>index.php/Apoyo/index" class="nav-link">
+										<i class="far " onclick="btn_info('<?php echo $idSolicitud; ?>')"></i>
+										<p>ACEPTAR SOLICITUD</p>
+									</a>
                             </td>
                         <td scope="col">
 

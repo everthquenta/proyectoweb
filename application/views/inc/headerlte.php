@@ -212,10 +212,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
 								</p>
 							</a>
 							<ul class="nav nav-treeview">
+							<li class="nav-item">
+									<a href="<?php echo base_url(); ?>index.php/Apoyo/l_entregas" class="nav-link">
+										<i class="far fa-circle nav-icon"></i>
+										<p>MATERIALES ENTREGADOS</p>
+									</a>
+								</li>
 								<li class="nav-item">
 									<a href="<?php echo base_url(); ?>index.php/Apoyo/index" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>APOYOS</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="<?php echo base_url(); ?>index.php/Apoyo/indexDeportista" class="nav-link">
+										<i class="far fa-circle nav-icon"></i>
+										<p>ENTREGA MATERIAL DE REPRESENTACION</p>
 									</a>
 								</li>
 

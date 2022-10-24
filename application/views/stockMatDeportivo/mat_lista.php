@@ -51,6 +51,22 @@
                                         ?></th>
                    
                      </th>
+                     <th scope="row">
+                         <?php
+                      $imgmat=$row->imgmat;
+                      if($imgmat==""){
+                      ?>
+                     <img src="<?php echo base_url();?>/uploads/user.jpg" style="width:60px; heigth: 60px;">
+                     <?php
+                      }else
+                     {
+                     ?>
+                     <img src="<?php echo base_url();?>uploads/<?php echo $imgmat;?>" style="width:60px; heigth: 60px;">
+                     <?php
+
+                     }
+                     ?>
+                     </th>
                         </td>
                         <td><?php echo $row->tipomat;
                          ?> </td>
@@ -60,11 +76,7 @@
                          ?> </td>
                          <td><?php echo $row->fechaRegistro;
                          ?> </td>
-                        <td scope="col">
-                        
-                        <img src="<?php echo base_url();?>./img/medalla1.jpg" style="width:60px; heigth: 60px;">
-
-                        </td>
+                       
 
 
 

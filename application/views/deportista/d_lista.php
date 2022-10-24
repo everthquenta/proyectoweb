@@ -20,10 +20,10 @@
                 <th>#</th> 
                   <th>PERFIL</th>
                   <th>NOMBRE</th> 
-                  <th>ASOCIACION DEPORTIVA</th>
-                  <th>INFORMACION</th>  
+                  <th>APELLIDO PARTERNO</th>
+                  <th>APELLIDO MATERNO</th>  
+                  <th>NUMERO DE CI</th>  
                   <?php if($this->session->userdata('tipo')=='admin'){?>
-                  <th>EDITAR</th>  
                   <th>ELIMINAR</th>
 
                   <?php }?>
@@ -66,10 +66,12 @@
                          ?> </td>
                         <td><?php echo $row->segundoApellido;
                          ?> </td>
+                         <td><?php echo $row->cedula;
+                         ?> </td>
                         <td scope="col">
 
 
-                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal_info" onclick="btn_info('<?php echo $idDeportista; ?>');">VER INFORMACION</button>
+                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal_info" onclick="btn_infoDeportista('<?php echo $idDeportista; ?>');">VER INFORMACION</button>
 
                             </td>
                         <td scope="col">
@@ -80,7 +82,7 @@
                         </td>
                         <td scope="col">
 
-                            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal_eliminar" onclick="btn_eliminar('<?php echo $idDeportista; ?>');">ELIMINAR</button>
+                            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal_eliminar" onclick="btn_eliminar_deportista('<?php echo $idDeportista; ?>');">ELIMINAR</button>
 
                             <!-- <button type="button" class="btn btn-outline-danger" onclick="btn_eliminar('<?php //echo $idConductor; 
                                                                                                                 ?>');"> -->
@@ -240,7 +242,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" id="eliminar" data-id="" onclick="btnEliminar()" class="btn btn-primary" data-dismiss="modal">Si</button>
+                <button type="button" id="eliminar" data-id="" onclick="btnEliminar_deportista()" class="btn btn-primary" data-dismiss="modal">Si</button>
             </div>
         </div>
     </div>

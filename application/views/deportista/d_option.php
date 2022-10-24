@@ -416,8 +416,8 @@ if ($opcion == "formulario_d") {
     <?php
     }
   }
-  if ($opcion == "eliminar") {
-    foreach ($asociacionesss->result() as $row) {
+  if ($opcion == "eliminar_deportista") {
+    foreach ($deportista_eliminar->result() as $row) {
 
     ?>
 
@@ -430,7 +430,7 @@ if ($opcion == "formulario_d") {
 
         <!-- <div class="col-md-4 col-xs-12"> -->
         <div class="row">
-          <input type="hidden" class="form-control" id="idAsociacion_eli" aria-describedby="emailHelp" value="<?php echo $row->idAsociacion ?>">
+          <input type="hidden" class="form-control" id="idDeportista_eli" aria-describedby="emailHelp" value="<?php echo $row->idDeportista ?>">
 
         </div>
 
@@ -446,7 +446,7 @@ if ($opcion == "formulario_d") {
 
   <?php
 
-if($opcion=="info"){?>
+if($opcion=="info_deportista"){?>
       <table class="table table-bordered" style="border-color:#061B3D !important">
             <thead class="text-white " style="border-bottom:none; background:#061B3D;">
                 <tr>
@@ -458,7 +458,7 @@ if($opcion=="info"){?>
 
             <?php
                 $indice = 1;
-                foreach ($asociacionessinfo->result() as $row) {
+                foreach ($deportistainfo->result() as $row) {
                 ?>
 
                   
@@ -467,11 +467,11 @@ if($opcion=="info"){?>
                     <div>
                     <td scope="row" colspan="2" >
                       <?php
-                      $logo=$row->logo;
-                      if($logo==""){
+                      $perfil=$row->perfil;
+                      if($perfil==""){
                       ?>
                       <center>
-                        <img src="<?php echo base_url();?>/uploads/user.jpeg" style="width:60%; heigth: 160%;">
+                        <img src="<?php echo base_url();?>/uploads/deportistas/perfil.jpeg" style="width:60%; heigth: 160%;">
 
                       </center>
                      <?php
@@ -479,7 +479,7 @@ if($opcion=="info"){?>
                      {
                      ?>
                      <center>
-                       <img src="<?php echo base_url();?>/uploads/<?php echo $logo;?>" style="width:60%; heigth: 60%;">
+                       <img src="<?php echo base_url();?>/uploads/deportistas/<?php echo $perfil;?>" style="width:60%; heigth: 60%;">
 
                      </center>
                      <?php
@@ -494,16 +494,16 @@ if($opcion=="info"){?>
                             <td><?php echo $row->nombre; ?></td>
                             <tr></tr>
                             <th>DIRECCION:</th>
-                            <td><?php echo $row->direccion; ?></td>
+                            <td><?php echo $row->primerApellido; ?></td>
                             <tr></tr>
                             <th>TELEFONO:</th>
-                            <td><?php echo $row->telefono; ?></td>
+                            <td><?php echo $row->segundoApellido; ?></td>
                             <tr></tr>
                             <th>CORREO:</th>
-                            <td><?php echo $row->correo; ?></td>
+                            <td><?php echo $row->cedula; ?></td>
                             <tr></tr>
                             <th>FECHA DE PERSONERIA JURIDICA:</th>
-                            <td><?php echo $row->fechaPersJuridica; ?></td>
+                            <td><?php echo $row->fichaMedica; ?></td>
                             <tr>
                           
                             </td>

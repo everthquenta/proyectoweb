@@ -1,76 +1,96 @@
-<div class="page-content bg-light">
+<div class="page-content bg-light border-5">
     <div class="page-header bg-light">
-        <div class="container-fluid" aling="center">
-            <h1  class="h5 no-margin-bottom">ENTREGA DE MATERIAL</h1>
+        <div class="container-fluid" aling="center" style="background:#7BE0C3">
+            <h3  class="text-center" >MATERIALES ENTREGADOS</h3>
         </div>
     </div>
     <section>
-        <div class="container-fluid">
-            <form action="" method="post" id="frmCompras" class="row" autocomplete="off">
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label for="buscar_solicitud">HOJA DE RUTA</label>
-                        <br>
-                        <input type="hidden" id="idSolicitud" name="idSolicitud">
-                        <input type="text" class="mibuscador_s form-control border border-dark " name="" id="dato_buscado" aria-describedby="emailHelp" onkeyup="btn_buscar_s();" style="width:60%;display:inline;margin-top:.1em; margin-bottom:15px;" >
-                        <div class="row">
-                                <div class="col-lg-9" width="100"; height="100";>
-                                    <div class="table - responsive">
-                                        <table class="table table-light mt-2" id="tablabusqueda">
-                                            <thead class="thead-white">
-                                                <tr>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="ListaCompras">
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-
+       
+            <form action="" method="post" id="frmCompras" class="row border-5" autocomplete="off">
+                    <div class=" col-lg-2 ">
+                            <label for="buscar_solicitud">HOJA DE RUTA</label>
+                            <input type="hidden" id="idSolicitud" name="idSolicitud">
+                            <input type="text" class="mibuscador_s form-control border border-dark " name="" id="dato_buscado" aria-describedby="emailHelp" onkeyup="btn_buscar_s();" style="width:100%;display:inline;margin-top:.1em; margin-bottom:15px;" >
+                        </div>
                         
-                        <span class="text-danger d-none" id="error">No hay producto</span>
+                        <div class="col-lg-3">
+                            <label for="ref">SOLICITADO POR</label>
+                                <input id="remitente" class="form-control" type="text" name="remitente"  readonly>
+                            <strong id="nombreP"></strong>
+                        </div>
+                        <div class="col-lg-2">
+                            <label for="cantidad">SOLICITA</label>
+                                <br>
+                            <input id="referencia" class="form-control" type="text" name="referencia" readonly>
+                        </div>
+                        <div class="col-lg-5">
+                            <label for="precio">PARA EL</label>
+                                <input id="campeonato" class="form-control" type="text" name="campeonato" readonly>
+                            <strong id="precioP"></strong>
+                        </div>  
+                        <button type="button" class="btn border border-dark" data-toggle="modal" data-target="#Mod_registrar_solic" onclick="btn_registrar_solicitud();">REGISTRAR</button>
+                            <table class="table table-light mt-2" id="tablabusqueda">
+                                                <thead class="thead-white">
+                                                    <tr>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="ListaCompras">
+
+                                                </tbody>
+                            </table>
+                            <span class="text-danger d-none" id="error">No hay producto</span>     
+                
+                
+                <div class="container-fluid" aling="center" style="background:#6920C3">
+                    <h3  class="text-center" >ENTREGA DE MATERIAL</h3>
+                </div>
+                <div class="input-group col-lg-12" id="lista-cursos">
+                    <div class=" col-lg-4">
+                        <label for="buscar_solicitud">MATERIAL DEPORTIVO</label>
+                        <br>
+                        <input type="hidden" id="idStockMatDep" name="idStockMatDep">
+                        <input type="text" class="mibuscador_mat form-control border border-dark " name="" id="dato_buscado_mat" aria-describedby="emailHelp" onkeyup="btn_buscar_mat();" style="width:100%;display:inline;margin-top:.1em; margin-bottom:15px;" >
                     </div>
                     <div class="col-lg-4">
-                    <div class="form-group">
-                        <label for="ref">SOLICITADO POR</label>
-                        <input id="remitente" class="form-control" type="text" name="referencia"  readonly>
-                        <br />
+                        <label for="campeonato">DETALLE DEL MATERIAL</label>
+                        <input id="talla" class="tallas form-control" type="text" name="campeonato" readonly>
                         <strong id="nombreP"></strong>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="form-group">
-                        <label for="cantidad">SOLICITA</label>
-                        <br>
-                        <input id="referencia" type="text">
+                    <div class="col-lg-2">
+                        <label for="cantidad">CANTIDAD A ENTREGAR</label>
+                        <input id="stock" type="hidden">
+                        <input id="stockmat" class="stockmats form-control" type="number" name="cantidad" onkeyup="IngresarCantidad(event);">
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="form-group">
-                        <label for="precio">PARA EL</label>
-                        <input id="campeonato" class="form-control" type="text" name="referencia" >
+                    <div class="col-lg-3">
+                        <label for="precio">CANTIDAD TOTAL DEL MATERIAL EN STOCK</label>
+                        <input id="cantstock" class="cantstocks form-control" type="text" name="precio" readonly>
                         <br />
                         <strong id="precioP"></strong>
                     </div>
-                </div>
-                </div>
+                    <div class="col-lg-3">
+                        <label for="precio">CATEGORIA PROGRAMATICA</label>
+                        <input id="categoriaProgramatica" class="categoriaProgramatica form-control" type="text" name="precio" readonly>
+                        <br />
+                        <strong id="precioP"></strong>
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="precio">PARTIDA PRESUPUESTARIA</label>
+                        <input id="partida" class="partida form-control" type="text" name="precio" readonly>
+                        <br />
+                        <strong id="precioP"></strong>
+                    </div>
+                    <div>
+                        <input type="button" value="+" class="agregar-carrito">
+                    </div>
 
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label for="buscar_solicitud">MATERIAL DEPORTIVO</label>
-                        <br>
-                        <input type="hidden" id="idSolicitud" name="idSolicitud">
-                        <input type="text" class="mibuscador_mat form-control border border-dark " name="" id="dato_buscado" aria-describedby="emailHelp" onkeyup="btn_buscar_mat();" style="width:60%;display:inline;margin-top:.1em; margin-bottom:15px;" >
-                        <div class="row">
-                                <div class="col-lg-12" width="100"; height="100";>
+                    <div class="row">
+                                <div class="col-lg-12" width="100"; height="100"; id="carito">
                                     <div class="table - responsive">
                                         <table class="table table-light mt-2" id="tablamaterial" >
                                             <thead class="thead-white">
@@ -93,58 +113,34 @@
                         
                         <span class="text-danger d-none" id="error">No hay producto</span>
                     </div>
-                    <div class="col-lg-4">
-                    <div class="form-group">
-                        <label for="campeonato">DETALLE DEL MATERIAL</label>
-                        <input id="talla" class="form-control" type="text" name="campeonato" readonly>
-                        <br />
-                        <strong id="nombreP"></strong>
-                    </div>
                 </div>
-                <div class="col-lg-2">
-                    <div class="form-group">
-                        <label for="cantidad">CANTIDAD A ENTREGAR</label>
-                        <input id="stock" type="hidden">
-                        <input id="stockmat" class="form-control" type="text" name="cantidad" onkeyup="IngresarCantidad(event);">
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="form-group">
-                        <label for="precio">CANTIDAD TOTAL DEL MATERIAL EN STOCK</label>
-                        <input id="cantstock" class="form-control" type="text" name="precio" readonly>
-                        <br />
-                        <strong id="precioP"></strong>
-                    </div>
-                </div>
-                </div>
-                <script src="<?php echo base_url(); ?>scripts/c_stockMatDeportivo.js"></script>
-                
-                <button type="button" class="btn btn-outline-primary"   onclick="">AÑADIR MATERIAL DEPORTIVO</button>
+                <div class="row">
+                    <div class="container-fluid" aling="center">
+                    <button type="button" class="btn btn-outline-primary"   onclick="btn_addMaterialCarrito()">AÑADIR MATERIAL DEPORTIVO</button>
 
+                    </div>
+                </div>
+                
             </form>
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="table-responsive">
-                        <table class="table table-light mt-4" id="tablaCompras">
+                    <div class="table-responsive" id="carrito">
+                        <table class="table table-light mt-4" id="lista-carrito">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Producto</th>
-                                    <th>Cantidad</th>
-                                    <th>Precio</th>
+                                    <th>Item</th>
+                                    <th>Material Deportivo</th>
+                                    <th>cantidad</th>
+                                    <th>Cat. prog</th>
                                     <th>Total</th>
-                                    <th>Accion</th>
                                 </tr>
                             </thead>
-                            <tbody id="ListaCompras">
+                            <tbody id="ListaEntrega">
 
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 mt-1">
+            <div class="row col-lg-12">
+                <div class="col-lg-6 mt-6">
                     <div class="form-group">
                         <strong class="text-primary">Datos de la Asociacion Deportiva</strong>
                         <input type="hidden" id="id_cliente" name="id_cliente">
@@ -154,20 +150,22 @@
                         <strong id="tel_cli" class="form-control border-0 text-success"></strong>
                     </div>
                 </div>
-                <div class="col-lg-4 mt-1">
+                <div class="col-lg-6 mt-1">
                     <div class="form-group">
                         <strong class="text-primary">Total a Entregar</strong>
                         <input type="hidden" id="total" name="total" class="form-control  mb-2">
                         <strong id="tVenta" class="form-control border-0 text-success"></strong>
-                        <button class="btn btn-danger" type="button" id="AnularCompra">Anular Entrega</button>
-                        <button class="btn btn-success" type="button" id="procesarVenta"><i class="fas fa-money-check-alt"></i> Procesar Entrega</button>
+                        <button class="btn btn-danger" type="button" id="AnularCompra" onclick="btn_vaciarCarrito()"> <i class="fas fa-trash-alt"></i> Anular Entrega</button>
+                        <button class="btn btn-success" type="button" id="procesarVenta" onclick="btn_procesarEntrega()"><i class="fas fa-money-check-alt"></i> Procesar Entrega</button>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 </div>
 
+<script src="<?php echo base_url(); ?>scripts/c_stockMatDeportivo.js"></script>
+<script src="<?php echo base_url(); ?>scripts/transaccionClon.js"></script>
+<script src="<?php echo base_url(); ?>scripts/c_apoyo.js"></script>
 
 
 <!-- Agregar medicamento -->

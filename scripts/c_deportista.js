@@ -62,15 +62,15 @@ function btn_listar_datos_deportista()
 
 
 
-function btn_eliminar(idAsociacion){
-    var idAsociacion = (idAsociacion);
-    var obj= {idAsociacion};
+function btn_eliminar_deportista(idDeportista){
+    var idDeportista = (idDeportista);
+    var obj= {idDeportista};
     console.log(obj)
         $.ajax({
                     //el protocolo
                     type: "POST",
                     //a donde quiero mandar el objeto
-                    url: "http://localhost/didede/index.php/Asociacion/traer_datos",    
+                    url: "http://localhost/didede/index.php/Deportista/traer_datos",    
                     data: obj,
     
                     //que quieres mostrar como recargable al iniciar
@@ -87,15 +87,15 @@ function btn_eliminar(idAsociacion){
                     }
                 });
 }
-function btnEliminar(){
-    var idAsociacion = $('#idAsociacion_eli').val();;
-    var obj= {idAsociacion};
+function btnEliminar_deportista(){
+    var idDeportista = $('#idDeportista_eli').val();;
+    var obj= {idDeportista};
     console.log(obj)
         $.ajax({
                     //el protocolo
                     type: "POST",
                     //a donde quiero mandar el objeto
-                    url: "http://localhost/didede/index.php/Asociacion/eliminar",    
+                    url: "http://localhost/didede/index.php/Deportista/eliminar_deportista",    
                     data: obj,
     
                     //que quieres mostrar como recargable al iniciar
@@ -108,7 +108,7 @@ function btnEliminar(){
                     {
                         console.log('success');
                         // $("#panel_respuesta_eliminar").html(data);
-                        btn_listar_datos();
+                        btn_listar_datos_deportista();
                         console.log('success');
                        
                     }
@@ -305,16 +305,16 @@ function btn_editar_deportista(idDeportista){
                 });
 }
 
-function btn_info(idAsociacion){
+function btn_infoDeportista(idDeportista){
     // console.log(id_medicamento);
 
-    var ob= {idAsociacion};
+    var ob= {idDeportista};
     console.log(ob);
         $.ajax({
                     //el protocolo
                     type: "POST",
                     //a donde quiero mandar el objeto
-                    url: "http://localhost/didede/index.php/Asociacion/info_datos",    
+                    url: "http://localhost/didede/index.php/Deportista/info_datos_deportista",    
                     data: ob,
     
                     //que quieres mostrar como recargable al iniciar

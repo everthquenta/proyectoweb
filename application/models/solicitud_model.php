@@ -30,9 +30,13 @@ class Solicitud_model extends CI_Model
 
 	public function recuperarsolicitud($idSolicitud)
 	{
-		$this->db->select('*'); //select*
-		$this->db->from('solicitud'); //tabla
-		$this->db->where('idSolicitud', $idSolicitud);
+		$this->db->select('s.hojaRuta, a.nombre, s.remitente, s.campeonato, s.idSolicitud,a.idAsociacion, s.referencia'); //select*
+		$this->db->from('solicitud s'); //tabla
+		$this->db->join('asociacion a', 'a.idAsociacion=s.idAsociacion'); //tabla
+		$this->db->where('a.estado', '1');
+		$this->db->where('s.estado', '1');
+		$this->db->where('s.idSolicitud', $idSolicitud);
+		$this->db->order_by('s.idsolicitud','desc');
 		return $this->db->get();	//devolucion del resultado de la consulta
 	}
 

@@ -61,12 +61,12 @@ class Deportista extends CI_Controller
 		
 	}
 
-	public function eliminar()
+	public function eliminar_deportista()
 	{
 
-		$idAsociacion = $_POST['idAsociacion'];
+		$idDeportista = $_POST['idDeportista'];
 		$data['estado'] = '0';
-		$this->asociacion_model->eliminarasociacion($idAsociacion, $data);
+		$this->deportista_model->eliminardeportista($idDeportista, $data);
 	}
 
 
@@ -82,22 +82,22 @@ class Deportista extends CI_Controller
 		$this->load->view('deportista/d_option', $data);
 		
 	}
-	public function info_datos()
+	public function info_datos_deportista()
 	{
-		$idAsociacion = $_POST['idAsociacion'];
-		$data["opcion"] = "info";
-		$data["asociacionessinfo"]= $this->asociacion_model->recuperarasociacion($idAsociacion);
+		$idDeportista = $_POST['idDeportista'];
+		$data["opcion"] = "info_deportista";
+		$data["deportistainfo"]= $this->deportista_model->recuperardeportista($idDeportista);
 		
-		$this->load->view('asociacion/option', $data);
+		$this->load->view('deportista/d_option', $data);
 	}
 	public function traer_datos()
 	{
-		$idAsociacion = $_POST['idAsociacion'];
-		$data["opcion"] = "eliminar";
-		$data["asociacionesss"]=$this->asociacion_model->recuperarasociacion($idAsociacion);
+		$idDeportista = $_POST['idDeportista'];
+		$data["opcion"] = "eliminar_deportista";
+		$data["deportista_eliminar"]=$this->deportista_model->recuperarDeportista($idDeportista);
 		
 
-		$this->load->view('asociacion/option', $data);
+		$this->load->view('deportista/d_option', $data);
 	}
 
 	public function guardar_datos_deportista()

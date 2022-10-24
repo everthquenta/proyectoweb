@@ -1,3 +1,5 @@
+var carritoMaterial=[];
+
 
 
 function btn_guardar_datos_solic()
@@ -220,6 +222,8 @@ function btn_seleccionar_solic(idSolicitud,hojaRuta,remitente,campeonato,referen
     campeonato_a.value=referencia;
     var solicita_a =document.getElementById("campeonato");
     solicita_a.value=campeonato;
+    var idSolicitud_a =document.getElementById("idSolicitud");
+    idSolicitud_a.value=idSolicitud;
 
 
     
@@ -227,6 +231,83 @@ function btn_seleccionar_solic(idSolicitud,hojaRuta,remitente,campeonato,referen
     tabla_solic.style.display="none";
     console.log(tabla_solic);
 }
+//añade material
+function btn_addMaterialCarrito(){
+
+    var idSolicitud_a =document.getElementById("idSolicitud").value;
+    console.log(idSolicitud_a);
+    var idStockMatDeportivo_a =document.getElementById("idStockMatDep").value;
+    console.log(idStockMatDeportivo_a);
+    var nombreMat =document.getElementById("dato_buscado_mat").value;
+    console.log(nombreMat);
+
+    var stockMat =document.getElementById("stockmat").value;
+    console.log(stockMat);
+    var catProg_a =document.getElementById("categoriaProgramatica").value;
+    console.log(catProg_a);
+    var partida_a =document.getElementById("partida").value;
+    console.log(partida_a);
+
+    var material_obj={idSolicitud_a,idStockMatDeportivo_a, nombreMat,stockMat, catProg_a,partida_a}
+    carritoMaterial=[...carritoMaterial,material_obj];
+    console.log(carritoMaterial);
+    
+    var Hoja_de_ruta =document.querySelector(".mibuscador_s");
+    crearHtml();
+
+     document.querySelector(".mibuscador_mat").value="";
+   
+}
+
+
+
+
+
+function crearHtml(){
+    var trasladarCarrito="";
+    var num=1;
+    var apoyo_a =document.querySelector("#lista-carrito tbody");
+    carritoMaterial.forEach(
+        material_obj=>{
+
+       trasladarCarrito=document.createElement('tr')
+       trasladarCarrito.innerHTML=`
+       <tr>
+       <th>${num}</th>
+       <th>${material_obj.idSolicitud_a}</th>
+       <th>${material_obj.idStockMatDeportivo_a}</th>
+       <th>${material_obj.catProg_a}</th>
+       <th>${material_obj.partida_a}</th>
+       <th>${material_obj.nombreMat}</th>
+       <th>${material_obj.stockMat}</th>
+
+
+       
+       </tr>
+       <td>
+       <a href="#" class="borrar-material btn btn-primary " data-id="" onclick="eliminarMaterial(event)">x</a>
+        </td>
+       `; 
+    num++;
+
+    })
+    apoyo_a.appendChild(trasladarCarrito);
+
+}
+function eliminarMaterial(e) {
+    e.preventDefault();
+
+    var trasladarCarrito,
+       idSolicitud;
+    if(e.target.classList.contains('borrar-material') ) {
+         e.target.parentElement.parentElement.remove();
+         trasladarCarrito = e.target.parentElement.parentElement;
+         idSolicitud = trasladarCarrito.querySelector('a').getAttribute('data-id');
+
+    }
+    eliminarCursoLocalStorage(cursoId);
+}
+
 //modal para registrar
 
 function btn_registrar_solicitud()
@@ -255,7 +336,7 @@ function btn_registrar_solicitud()
 
 // function btn_salir()
 // {
-//     console.log("intentando salir desde medicamento");
+//     conso{le.log("intentando salir desde medicamento");
 
 //     var obj= "";
 //         $.ajax({
@@ -323,5 +404,37 @@ function btn_info(idAsociacion){
                        
                     }
                 });
+}
+
+function btn_procesarEntrega(){
+
+     var obj = {
+          arreglo:JSON.stringify(carritoMaterial),
+     };
+     console.log(obj);
+     $.ajax({
+          type: "POST",
+          url:'http://localhost/didede/index.php/Apoyo/insertarDatos',
+          data:obj,
+          success: function(data){
+               // console.log(data);
+               window.location.href=`http://localhost/didede/index.php/Apoyo/imprimir/${data}`;
+          }
+     })
+}
+function btn_vaciarCarrito() {
+    // forma lenta
+    // listaCursos.innerHTML = '';
+    // forma rapida (recomendada)
+    var vaciarcarrito =document.querySelector("#lista-carrito tbody");
+    while(vaciarcarrito.firstChild) {
+         vaciarcarrito.removeChild(vaciarcarrito.firstChild);
+    }
+    
+
+    // Vaciar Local Storage
+    vaciarLocalStorage();
+
+    return false;
 }
 
