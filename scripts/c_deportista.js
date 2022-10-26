@@ -126,8 +126,9 @@ function btn_guardar_edicion_deportista()
     var fechaNacimiento = $("#fechaNacimiento_edi").val();
     var cedula = $("#cedula_edi").val();
     var fichaMedica = $("#fichaMedica_edi").val();
-    var perfil = $("#perfil").val();
-    
+    var perfil = $("#perfil").prop('files')[0];
+    var datosForm= new FormData;
+    datosForm.append("#perfil",perfil);
 
     var ob= {idAsociacion:Number(idAsociacion),idDeportista:Number(idDeportista),nombre:nombre,primerApellido:primerApellido,segundoApellido:segundoApellido,fechaNacimiento:fechaNacimiento,cedula:cedula,fichaMedica:fichaMedica,perfil:perfil};
     console.log(ob);    
@@ -146,7 +147,7 @@ function btn_guardar_edicion_deportista()
                     success: function(data)
                     {
                         $("#panel_respuesta_ediDeportista").html(data);
-                        btn_listar_datos();
+                        btn_listar_datos_deportista();
                        
                     }
                 });

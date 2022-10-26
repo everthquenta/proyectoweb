@@ -52,7 +52,7 @@ class Deportista extends CI_Controller
 		$data['cedula'] = $_POST['cedula'];
 		$data['fichaMedica'] = $_POST['fichaMedica'];
 		
-		$data['perfil'] = $_POST['perfil'];
+		$data['perfil'] = $_FILES['perfil'];
 
 		
 		// echo $fechaCreacion;
@@ -111,7 +111,6 @@ class Deportista extends CI_Controller
 		$data['fechaNacimiento'] = $_POST['fechaNacimiento'];
 		$data['cedula'] = $_POST['cedula'];
 		$data['fichaMedica'] = $_POST['fichaMedica'];
-		$data['perfil'] = $_FILES['perfil'];
 
 		$nombrearchivo=$idDeportista.".jpg";
 		$config['upload_path']='./uploads/deportistas';
@@ -125,7 +124,7 @@ class Deportista extends CI_Controller
 			}
 			
 		
-		$config['allowed_types']='jpg';
+		$config['allowed_types']='jpg|png';
 		$this->load->library('upload',$config);
 
 		if(!$this->upload->do_upload())
