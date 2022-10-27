@@ -303,7 +303,7 @@ function btn_editar_deportista(idDeportista){
                     }
                 });
 }
-
+//MUESTRA LA INFORMACION DE DEPORTISTA
 function btn_infoDeportista(idDeportista){
     // console.log(id_medicamento);
 

@@ -274,8 +274,7 @@ function crearHtml(){
        trasladarCarrito.innerHTML=`
        <tr>
        <th>${num}</th>
-       <th>${material_obj.idSolicitud_a}</th>
-       <th>${material_obj.idStockMatDeportivo_a}</th>
+       
        <th>${material_obj.catProg_a}</th>
        <th>${material_obj.partida_a}</th>
        <th>${material_obj.nombreMat}</th>

@@ -39,7 +39,7 @@ class StockMatDeportivo extends CI_Controller
 
 		$this->load->view('StockMatDeportivo/mat_option', $data);
 	}
-
+    //AGREGA EL MATERIAL A LA BASE DE DATOS
 
 	public function agregar_bd_mat()
 	{
