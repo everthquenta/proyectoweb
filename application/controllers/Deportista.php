@@ -218,4 +218,118 @@ class Deportista extends CI_Controller
 		$this->load->view('asociacion/sinpersoneria', $data);
 		$this->load->view('inc/footerlte');
 	}
+	public function imprimirlistaDeportista($id)
+	{
+		$apoyo_pdf = $this->apoyo_model->l_apoyo_pdf($id);
+		$apoyo_pdf = $apoyo_pdf->result();
+			/*$detallesCliente = $this->apoyo_model->detallesCliente($id);*/
+			foreach ($apoyo_pdf as $row) {
+
+				$idSolicitud = $row->idSolicitud;
+				$nombreAsoc=$row->nombre;
+				$solicitante=$row->remitente;
+				$fechaEntrega=$row->fechaRegistro;
+				$HR=$row->hojaRuta;
+				$campeonato=$row->campeonato;
+				//$nombreAsoc=$row->cantidad;
+				//$nit = $row->cedula;
+				//$vf = $row->vf;
+				//$ttal = 'Bs.- '.$row->precioUnitario;
+			}
+
+
+			/*foreach ($detallesCliente as $row) {
+				$nombreCliente = $row->nombre .' ' .$row->primerApellido .' ' . $row->segundoApellido;
+				$nit = $row->cedula;
+				$vf = $row->vf;
+				$ttal = 'Bs.- '.$row->precioUnitario;
+			}*/
+			//$nombreEmpleado = $this->session->userdata('usuario');
+			$nombreEmpleado = 'Ariel Viamont Mamani';
+			$this->pdf = new Pdf();
+			$this->pdf->AddPage();
+			$this->pdf->AliasNbPages(); //numeracion
+			$this->pdf->SetTitle('ActadeEntregaDIDEDE'); //titulo de los plantas del documento o del pdf
+			$this->pdf->SetLeftMargin(15); //margen izq.
+			$this->pdf->SetRightMargin(15); //margen derecho
+			$this->pdf->SetFillColor(210, 210, 210); //color de griss
+			$this->pdf->SetFont('Arial', 'B', 11); //tipo de letra y tama;o
+			$this->pdf->cell(30); //tamanio de la celda
+			$this->pdf->Cell(120, 10, 'ENTREGA DE MATERIAL DEPORTIVO', 0, 0, 'C', 1);
+			$this->pdf->Ln(15);
+			$this->pdf->SetFillColor(255, 255, 255); //color de griss
+			$this->pdf->SetFont('Arial', '', 10);
+			$this->pdf->Cell(50, 8, 'ASOC. DEPORTIVA. DPTAL.:', 0, 0, 'L', 1);
+			$this->pdf->Cell(25, 8, $nombreAsoc, 0, 0, 'L', 0);
+			$this->pdf->SetFont('Arial', 'B', 20);
+			$this->pdf->Cell(0);
+			$this->pdf->Cell(120, 10, 'EVENTO DEPORTIVO', 0, 0, 'C', 1);
+			$this->pdf->Cell(10, 8, $campeonato, 0, 0, 'L', 1);
+			$this->pdf->SetFont('Arial', '',10);
+			$this->pdf->Ln(8);
+			$this->pdf->Cell(20, 8, 'Solicitante:', 0, 0, 'L', 1);
+			$this->pdf->Cell(10, 8, $solicitante, 0, 0, 'L', 1);
+			$this->pdf->Ln(8);
+			$this->pdf->Cell(28, 8, 'HOJA DE RUTA:', 0, 0, 'L', 1);
+			$this->pdf->Cell(10, 8, $HR, 0, 0, 'L', 10);
+			$this->pdf->Ln(8);
+			$this->pdf->Cell(40, 8, 'FECHA DE ENTREGA :', 0, 0, 'L', 1);
+			$this->pdf->Cell(10, 8, $fechaEntrega, 0, 0, 'L', 1);
+			$this->pdf->Ln(10);
+			$this->pdf->SetFont('Arial', '', 12);
+			$this->pdf->MultiCell(180, 8, 'Ante la solicitud realizada por '.$solicitante.' Presidente de la '.$nombreAsoc.' quien solicita Material Deportivo de Premiacion para la realizacion del'.$campeonato.' a realizarse en la Ciudad de Cochabamba', 0, 0, 'C', 1);
+
+
+
+			//ancho, alto, texto, borde, orden de sig celda, Alineacion LCR, FILL 0 para NO y 1 para SI
+			//orden de la sig celda    (0 derecha    1 siguiente linea   2 debajo)
+
+			$this->pdf->Ln(15); //espaciado luego del titulo del documento
+			$this->pdf->SetFont('Arial', 'B', 12);
+			$this->pdf->Cell(180, 5, ' DETALLE DE ENTREGA DE MATERIAL', 0, 'C', 1);
+			$this->pdf->SetFont('Arial', 'B', 10);
+			$this->pdf->Ln(2);
+			$this->pdf->Cell(12, 5, 'Nro', 'TBLR', 0, 'C', 1);
+			$this->pdf->Cell(60, 5, 'Material Deportivo', 'TBLR', 0, 'C', 1);
+			$this->pdf->Cell(35, 5, 'Cat. Programatica', 'TBLR', 0, 'C', 1);
+			$this->pdf->Cell(32, 5, 'Partida', 'TBLR', 0, 'C', 1);
+			$this->pdf->Cell(32, 5, 'Cantidad', 'TBLR', 0, 'C', 1);
+			$this->pdf->Ln(5);
+			$this->pdf->SetFont('Arial', '', 9);
+			$num = 1;
+			foreach ($apoyo_pdf as $row) {
+				$material = $row->tipomat;
+				$catProg= $row->categoriaProgramatica;
+				$partida= $row->partida;
+				$cantidad= $row->cantidad;
+
+				//$cantidad = $row->cantidad;
+				//$precioTotal = $row->precioTotal;
+				//$tt = $cantidad * $precioTotal;*/
+
+				$this->pdf->Cell(12, 5, $num,'TBLR',  0, 'C', 0);
+				$this->pdf->Cell(60, 5, $material,'TBLR', 0, 'C', 0);
+				$this->pdf->Cell(35, 5, $catProg,'TBLR',  0, 'C', 0);
+				$this->pdf->Cell(32, 5, $partida, 'TBLR', 0, 'C', 0);
+				$this->pdf->Cell(32, 5, $cantidad, 'TBLR', 0, 'C', 0);
+				
+				$this->pdf->Ln(5);
+				$num++;
+			}
+			$suma=0;
+			foreach($apoyo_pdf as $row){
+					$suma+=$row->cantidad;
+			}
+			$this->pdf->Cell(139, 5, 'Cantidad', 'TBLR', 0, 'C', 1);
+			$this->pdf->Cell(32, 5, $suma, 'TBLR', 0, 'C', 1);
+			$this->pdf->Ln(60);
+			$this->pdf->SetFont('Arial', 'B', 10);
+			$this->pdf->Cell(32, 5, '                    -----------------------------------------------------                           -----------------------------------------------------   ', 0, 'C', 1);
+			$this->pdf->Cell(32, 5, '                                            FIRMA                                                                              FIRMA   ', 0, 'C', 1);
+			$this->pdf->Cell(32, 5, '                                ENTREGUE CONFORME                                                RECIBI CONFORME   ', 0, 'C', 1);
+
+
+			$this->pdf->Output("Listacarrito.pdf", "I");
+			
+	}
 }
